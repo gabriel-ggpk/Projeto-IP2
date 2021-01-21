@@ -6,6 +6,11 @@ public abstract class Pessoa {
 		this.nome =nome;
 		this.senha = senha;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

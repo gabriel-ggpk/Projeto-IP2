@@ -13,6 +13,37 @@ public AlunoMatriculado(Aluno aluno, Disciplina disciplina) {
 	this.disciplina = disciplina;
 	cursando = true;
 }
+public Aluno getAluno() {
+	return aluno;
+}
+public void setAluno(Aluno aluno) {
+	this.aluno = aluno;
+}
+public float[] getNotas() {
+	return notas;
+}
+public void setNotas(float[] notas) {
+	this.notas = notas;
+}
+public int getFaltas() {
+	return faltas;
+}
+public void setFaltas(int faltas) {
+	this.faltas = faltas;
+}
+public Disciplina getDisciplina() {
+	return disciplina;
+}
+public void setDisciplina(Disciplina disciplina) {
+	this.disciplina = disciplina;
+}
+public boolean isCursando() {
+	return cursando;
+}
+public void setCursando(boolean cursando) {
+	this.cursando = cursando;
+}
+
 
  
 }
