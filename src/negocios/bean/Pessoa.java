@@ -2,13 +2,22 @@ package negocios.bean;
 
 public abstract class Pessoa {
 	private String nome,senha;
-	public Pessoa(String nome,String senha) {
+	private String codigo;
+	
+	public Pessoa(String nome, String senha, String codigo) {
 		this.nome =nome;
 		this.senha = senha;
+		this.codigo = codigo;
 	}
 	
 	public String getNome() {
 		return nome;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public String getCodigo() {
+		return codigo;
 	}
 
 	@Override

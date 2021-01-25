@@ -7,7 +7,7 @@ public class Main {
 		Disciplina mat = new Disciplina("Mat", 20, 15);
 		Disciplina arte = new Disciplina("Artes", 20, 15);
 		Disciplina bio = new Disciplina("Bio", 20, 15);
-		Aluno l = new Aluno("L", "senha", 1234);
+		Aluno l = new Aluno("L", "senha", "1234");
 		
 		AlunoMatriculado mat1 = new AlunoMatriculado(l, mat, 2020.2);
 		AlunoMatriculado mat2 = new AlunoMatriculado(l, mat, 2020.2);
