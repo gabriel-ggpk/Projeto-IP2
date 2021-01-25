@@ -3,20 +3,26 @@ package negocios.bean;
 import dados.RepoAlunoMatriculado;
 
 public class Aluno extends Pessoa {
-	private String entrada;
+	private int codigo;
 	private RepoAlunoMatriculado matriculas;
 
-	public Aluno(String nome, String senha,String entrada) {
+	public Aluno (String nome, String senha, int codigo) {
 		super(nome, senha);
-		this.entrada = entrada;
+		this.codigo = codigo;
 		matriculas = new RepoAlunoMatriculado();
 	}
-	public void adicionarMatricula(AlunoMatriculado matriculado) {
-		for(AlunoMatriculado m: matriculas.getMatriculas()) {
-			if(matriculado.equals(m)) {
-				
-			}
-		}
+	
+	public void adicionarMatricula (AlunoMatriculado matricula) {
+		this.matriculas.adicionarMatricula(matricula);
 	}
 	
+	public String getNome () {
+		return super.getNome();
+	}
+	public int getCodigo () {
+		return codigo;
+	}
+	public RepoAlunoMatriculado getMatriculas() {
+		return matriculas;
+	}
 }
