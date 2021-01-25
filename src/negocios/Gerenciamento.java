@@ -3,7 +3,7 @@ package negocios;
 
 import dados.RepoPessoas;
 import negocios.bean.Aluno;
-import negocios.bean.AlunoMatriculado;
+
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 
