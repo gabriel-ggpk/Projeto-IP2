@@ -34,14 +34,16 @@ public class RepoAlunoMatriculado {
 		return matriculasDoSemestre;
 	}
 	
-	public AlunoMatriculado buscarMatricula(Disciplina disciplina) {
-		for(AlunoMatriculado a:matriculas) {
-			if(a.getDisciplina().equals(disciplina)) {
-				return a;
+	public ArrayList<AlunoMatriculado> buscarDisciplina(Disciplina disciplina) {
+		ArrayList<AlunoMatriculado> matriculasNaDisciplina = new ArrayList<>();
+		
+		for (int n = 0; n < matriculas.size(); n++) {
+			if (matriculas.get(n).getDisciplina() == disciplina) {
+				matriculasNaDisciplina.add(matriculas.get(n));
 			}
 		}
-		System.out.println("log: Matricula inexistente");
-		return null;	
+		
+		return matriculasNaDisciplina;
 	}
 	
 }

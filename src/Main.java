@@ -1,6 +1,5 @@
 
 import negocios.bean.Aluno;
-import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 
 public class Main {
@@ -9,12 +8,6 @@ public class Main {
 		Disciplina arte = new Disciplina("Artes", 20, 15);
 		Disciplina bio = new Disciplina("Bio", 20, 15);
 		Aluno l = new Aluno("L", "senha", "1234");
-		
-		/*AlunoMatriculado mat1 = new AlunoMatriculado(l, mat, 2020.2);
-		AlunoMatriculado mat2 = new AlunoMatriculado(l, mat, 2020.2);
-		AlunoMatriculado art1 = new AlunoMatriculado(l, arte, 2020.1);
-		AlunoMatriculado art2 = new AlunoMatriculado(l, arte, 2020.2);
-		AlunoMatriculado bio1 = new AlunoMatriculado(l, bio, 2020.2);*/
 		
 		l.adicionarMatricula(mat,2020.2);
 		l.adicionarMatricula(mat,2020.2);
