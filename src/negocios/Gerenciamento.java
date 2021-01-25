@@ -23,7 +23,7 @@ public class Gerenciamento {
 		
 	}
 	public void matricularAluno(Aluno aluno, Disciplina disciplina, double semestre) {
-		AlunoMatriculado matricula = new AlunoMatriculado(aluno, disciplina, semestre);
-		aluno.adicionarMatricula(matricula);
+		
+		aluno.adicionarMatricula(disciplina,semestre);
 	}
 }
