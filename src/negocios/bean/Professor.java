@@ -7,5 +7,18 @@ public class Professor extends Pessoa {
 		super(nome, senha,codigo);
 		this.disciplina = disciplina;
 	}
-	
+
+	public Disciplina getDisciplina() {
+		return this.disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s%n%s | %s","Professor", super.toString(), this.getDisciplina());
+	}
+
 }

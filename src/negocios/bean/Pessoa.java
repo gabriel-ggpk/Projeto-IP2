@@ -41,5 +41,9 @@ public abstract class Pessoa {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return String.format("Nome: %s | Codigo: %s | Senha: %s", this.getNome(), this.getCodigo(), this.getSenha());
+	}
 }

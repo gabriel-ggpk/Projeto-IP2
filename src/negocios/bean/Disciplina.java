@@ -35,4 +35,8 @@ public class Disciplina {
 		this.vagas = Math.max(0, vagas);
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Disciplina: (Nome: %s | Aulas Totais: %d | Vagas: %d)", this.getNome(), this.getAulasTotais(), this.getVagas());
+	}
 }

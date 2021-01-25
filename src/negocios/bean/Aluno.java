@@ -24,4 +24,9 @@ public class Aluno extends Pessoa {
 	public RepoAlunoMatriculado getMatriculas() {
 		return matriculas;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s%n%s","Aluno", super.toString());
+	}
 }

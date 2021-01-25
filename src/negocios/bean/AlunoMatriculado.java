@@ -62,7 +62,23 @@ public class AlunoMatriculado {
 			return false;
 		return true;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		String notasString = "[";
+		for (int i = 0; i < this.getNotas().length; i++) {
+			notasString += this.getNotas()[i];
+			if(i < this.getNotas().length - 1)
+				notasString += ", ";
+		}
+		notasString += "]";
+
+		return String.format("Aluno Matriculado%n%s%n%s%nSemestre: %f | Notas: %s | Faltas: %d",
+				this.getAluno(), this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
+	}
+
+	public static void main(String[] args) {
+		AlunoMatriculado a = new AlunoMatriculado(new Aluno("Jo", "1234", "1234"), new Disciplina("Matematica", 60, 40), 2015.2);
+		System.out.println(a);
+	}
 }
