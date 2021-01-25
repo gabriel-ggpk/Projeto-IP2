@@ -30,7 +30,9 @@ public class RepoAlunoMatriculado {
 				matriculasDoSemestre.add(matriculas.get(n));
 			}
 		}
-		
+		if(matriculasDoSemestre.isEmpty()) {
+			System.out.println("nenhuma matricula encontrada");
+		}
 		return matriculasDoSemestre;
 	}
 	

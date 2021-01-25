@@ -37,5 +37,18 @@ public class RepoPessoas implements RepositorioPessoas {
 		System.out.println("Pessoa inexistente");
 		return null;	
 	}
+	public Pessoa procurarPorNome(String nome) {
+		for(Pessoa p:pessoas) {
+			if(p.getCodigo().equals(nome)) return p;
+		}
+		System.out.println("Pessoa inexistente");
+		return null;	
+	}
+	
+
+	public ArrayList<Pessoa> getPessoas() {
+		return pessoas;
+	}
+	
 	
 }

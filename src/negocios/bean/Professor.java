@@ -21,8 +21,8 @@ public class Professor extends Pessoa {
 	}
 	
 	public void darNota(AlunoMatriculado aluno, double nota, int numeroProva) {
-		if(numeroProva >= 1 && numeroProva <= 4) {
-			aluno.setNotas(nota, numeroProva);
+		if(numeroProva >= 1 && numeroProva <= 4 &&nota>=0&&nota<=10) {
+			aluno.adicionarNota(nota, numeroProva);
 		}
 	}
 	

@@ -29,7 +29,7 @@ public class AlunoMatriculado {
 	public double[] getNotas() {
 		return notas;
 	}
-	public void setNotas(double nota, int numeroProva) {
+	public void adicionarNota(double nota, int numeroProva) {
 		this.notas[numeroProva - 1] = nota;
 	}
 	public int getFaltas() {
@@ -83,7 +83,7 @@ public class AlunoMatriculado {
 		}
 		notasString += "]";
 
-		return String.format("Aluno Matriculado%n%s%n%s%nSemestre: %f | Notas: %s | Faltas: %d",
+		return String.format("Aluno Matriculado%n%s%n%s%nSemestre: %.1f | Notas: %s | Faltas: %d",
 				this.getAluno(), this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
 	}
 
