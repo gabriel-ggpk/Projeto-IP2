@@ -3,15 +3,14 @@ package negocios.bean;
 public class Professor extends Pessoa {
 	private Disciplina disciplina;
 
-	public Professor(String nome, String senha,String codigo, Disciplina disciplina) {
-		super(nome, senha,codigo);
+	public Professor(String nome, String senha, String codigo, Disciplina disciplina) {
+		super(nome, senha, codigo);
 		this.disciplina = disciplina;
 	}
 
 	public Disciplina getDisciplina() {
 		return this.disciplina;
 	}
-
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
@@ -19,6 +18,20 @@ public class Professor extends Pessoa {
 	@Override
 	public String toString() {
 		return String.format("%s%n%s | %s","Professor", super.toString(), this.getDisciplina());
+	}
+	
+	public void darNota(AlunoMatriculado aluno, double nota, int numeroProva) {
+		if(numeroProva >= 1 && numeroProva <= 4) {
+			aluno.setNotas(nota, numeroProva);
+		}
+	}
+	
+	public void darFalta(AlunoMatriculado aluno) {
+		aluno.darFalta();
+	}
+
+	public void tirarFalta(AlunoMatriculado aluno) {
+		aluno.tirarFalta();
 	}
 
 }
