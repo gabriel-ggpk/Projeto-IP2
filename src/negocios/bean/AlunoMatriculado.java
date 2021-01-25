@@ -77,8 +77,4 @@ public class AlunoMatriculado {
 				this.getAluno(), this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
 	}
 
-	public static void main(String[] args) {
-		AlunoMatriculado a = new AlunoMatriculado(new Aluno("Jo", "1234", "1234"), new Disciplina("Matematica", 60, 40), 2015.2);
-		System.out.println(a);
-	}
 }
