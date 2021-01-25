@@ -12,12 +12,9 @@ public class RepoAlunoMatriculado {
 	}
 	
 	public void adicionarMatricula(AlunoMatriculado matricula) {
-		if (!matriculas.contains(matricula)) {
+		
 			matriculas.add(matricula);
-		}
-		else {
-			System.out.println("Já esta matriculado em " + matricula.getDisciplina() + " em " + matricula.getSemestre());
-		}
+		
 		
 	}
 
