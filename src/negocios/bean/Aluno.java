@@ -10,7 +10,7 @@ public class Aluno extends Pessoa {
 		matriculas = new RepoAlunoMatriculado();
 	}
 	
-	public void adicionarMatricula (Disciplina disciplina,double semestre) {
+	public void adicionarMatricula(Disciplina disciplina,double semestre) {
 		AlunoMatriculado matricula = new AlunoMatriculado(this, disciplina, semestre);
 		if(!matriculas.getMatriculas().contains(matricula)) {
 			this.matriculas.adicionarMatricula(matricula);

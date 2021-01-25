@@ -47,5 +47,11 @@ public class RepoAlunoMatriculado {
 		
 		return matriculasNaDisciplina;
 	}
+	public AlunoMatriculado disciplinaCursando(Disciplina disciplina) {
+		for(AlunoMatriculado m: matriculas) {
+			if(m.getDisciplina().equals(disciplina)&&m.isCursando()) return m;
+		}
+		return null;
+	}
 	
 }
