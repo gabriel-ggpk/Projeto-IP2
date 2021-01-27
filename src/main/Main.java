@@ -30,7 +30,7 @@ public class Main extends Application {
 		stg.getScene().setRoot(pane);
 	}
 
-	public Gerenciamento getGer() { return ger; }
+	public static Gerenciamento getGer() { return ger; }
 
 	public static void main(String[] args) {
 		ger = Gerenciamento.getInstMain();
