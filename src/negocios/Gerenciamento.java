@@ -9,8 +9,7 @@ import negocios.bean.Pessoa;
 public class Gerenciamento {
 	private RepoPessoas pessoas = new RepoPessoas();
 	private Pessoa usuario;
-	public Gerenciamento() {
-		
+	public Gerenciamento() {	
 	}
 	public void logIn(String codigo, String senha) {
 		for(Pessoa p: pessoas.getPessoas()) {
