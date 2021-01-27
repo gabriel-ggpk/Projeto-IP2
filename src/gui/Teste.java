@@ -2,17 +2,16 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import main.Main;
 
 public class Teste implements Initializable {
 
@@ -25,7 +24,6 @@ public class Teste implements Initializable {
     @FXML
     PasswordField senha;
 
-
     @FXML
     private void cadastrar(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -37,8 +35,8 @@ public class Teste implements Initializable {
 
     @FXML
     private void mudarCena(ActionEvent event) throws IOException {
-        Parent root2 = FXMLLoader.load(getClass().getResource("Cadastro.fxml"));
-        cena.getChildren().setAll(root2);
+        Main m = new Main();
+        m.changeScene("/gui/Cadastro.fxml");
     }
 
     @Override
