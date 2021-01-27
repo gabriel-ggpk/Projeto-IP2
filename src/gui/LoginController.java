@@ -12,9 +12,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import main.Main;
+import negocios.bean.Aluno;
 
 public class LoginController implements Initializable {
-
+	private Main m;
     @FXML
     AnchorPane cena;
 
@@ -26,14 +27,17 @@ public class LoginController implements Initializable {
 
     @FXML
     private void mudarCena(ActionEvent event) throws IOException {
-        Main m = new Main();
         m.changeScene("/gui/Cadastro.fxml");
     }
 
     @FXML
-    private void logar(ActionEvent event) {
+    private void logar(ActionEvent event) throws IOException {
+    	if(Main.getGer().logIn(login.getText(),senha.getText()) && Main.getGer().getUsuario() instanceof Aluno ) {
+    		m.changeScene("/gui/Aluno.fxml");
+    	}
+  
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {m = new Main();}
 }

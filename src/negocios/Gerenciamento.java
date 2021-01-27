@@ -21,16 +21,18 @@ public class Gerenciamento {
 		return _inst;
 	}
 	
-	public void logIn(String codigo, String senha) {
+	public boolean logIn(String codigo, String senha) {
 		for(Pessoa p: pessoas.getPessoas()) {
 			if(codigo.equals(p.getCodigo())) {
 				if(senha.equals(p.getSenha())) {
 					usuario = p;
+					return true;
 				}
-				else System.out.println("senha incorreta");	
+				else return false;	
 			}
-			else System.out.println("usuario inexistente");
+			else return false;
 		}
+		return false;
 	}
 	
 	public void logOut() {

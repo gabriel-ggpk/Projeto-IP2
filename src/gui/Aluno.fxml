@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="gui.Aluno">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AlunoController">
    <children>
-      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome: " />
       <Label fx:id="nomeAluno" layoutX="56.0" layoutY="14.0" prefHeight="17.0" prefWidth="178.0" />
+      <Accordion layoutX="28.0" layoutY="197.0" prefHeight="166.0" prefWidth="665.0">
+        <panes>
+          <TitledPane animated="false" text="untitled 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="103.0" prefWidth="663.0">
+                     <children>
+                        <TableView layoutX="286.0" prefHeight="73.0" prefWidth="377.0">
+                          <columns>
+                              <TableColumn prefWidth="75.0" text="PROVA 1" />
+                              <TableColumn prefWidth="75.0" text="PROVA 2" />
+                              <TableColumn prefWidth="75.0" text="PROVA 3" />
+                              <TableColumn prefWidth="75.0" text="PROVA 4" />
+                              <TableColumn text="MEDIA" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="untitled 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="286.0" layoutY="-2.0" prefHeight="73.0" prefWidth="377.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="PROVA 1" />
+                              <TableColumn prefWidth="75.0" text="PROVA 2" />
+                              <TableColumn prefWidth="75.0" text="PROVA 3" />
+                              <TableColumn prefWidth="75.0" text="PROVA 4" />
+                              <TableColumn text="MEDIA" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" prefHeight="87.0" prefWidth="665.0" text="untitled 3">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="286.0" layoutY="-2.0" prefHeight="72.0" prefWidth="378.0">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="PROVA 1" />
+                              <TableColumn prefWidth="75.0" text="PROVA 2" />
+                              <TableColumn prefWidth="75.0" text="PROVA 3" />
+                              <TableColumn prefWidth="75.0" text="PROVA 4" />
+                              <TableColumn text="MEDIA" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+            <TitledPane animated="false" prefHeight="77.0" prefWidth="665.0" text="untitled">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
    </children>
 </AnchorPane>
