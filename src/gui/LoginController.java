@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 import main.Main;
 
-public class Teste implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
     AnchorPane cena;
@@ -25,18 +25,13 @@ public class Teste implements Initializable {
     PasswordField senha;
 
     @FXML
-    private void cadastrar(ActionEvent event) {
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Alerta");
-        alerta.setHeaderText(null);
-        alerta.setContentText("Login: " + login.getText() + " | Senha: " + senha.getText());
-        alerta.showAndWait();
-    }
-
-    @FXML
     private void mudarCena(ActionEvent event) throws IOException {
         Main m = new Main();
         m.changeScene("/gui/Cadastro.fxml");
+    }
+
+    @FXML
+    private void logar(ActionEvent event) {
     }
 
     @Override

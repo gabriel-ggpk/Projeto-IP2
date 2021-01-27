@@ -7,10 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import negocios.Gerenciamento;
 
 public class Main extends Application {
 	
 	private static Stage stg;
+	private static Gerenciamento ger;
 	
 	@Override
     public void start(Stage stageInicial) throws Exception {
@@ -27,8 +29,12 @@ public class Main extends Application {
 		Parent pane = FXMLLoader.load(getClass().getResource(fxml));
 		stg.getScene().setRoot(pane);
 	}
-	
+
+	public static Gerenciamento getGer() { return ger; }
+
 	public static void main(String[] args) {
+		Gerenciamento ger = new Gerenciamento();
 		launch(args);
 	}
+
 }

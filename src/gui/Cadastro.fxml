@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="cena" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Teste">
+<AnchorPane fx:id="cena" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroController">
    <children>
       <Button layoutX="327.0" layoutY="311.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
       <TextField fx:id="login" layoutX="286.0" layoutY="215.0" />
