@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CadastroController implements Initializable {
-
+	private Main m;
     @FXML
     TextField login;
 
@@ -32,5 +32,7 @@ public class CadastroController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    	m = new Main();
+    }
 }

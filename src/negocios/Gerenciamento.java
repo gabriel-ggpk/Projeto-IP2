@@ -9,8 +9,18 @@ import negocios.bean.Pessoa;
 public class Gerenciamento {
 	private RepoPessoas pessoas = new RepoPessoas();
 	private Pessoa usuario;
-	public Gerenciamento() {	
+	private Gerenciamento() {
+		pessoas = new RepoPessoas();
+		usuario = new Aluno("gabriel",null,null);
 	}
+	private static Gerenciamento _inst;
+	public static Gerenciamento getInstMain() {
+		if(_inst ==null) {
+			_inst = new Gerenciamento();
+		}
+		return _inst;
+	}
+	
 	public void logIn(String codigo, String senha) {
 		for(Pessoa p: pessoas.getPessoas()) {
 			if(codigo.equals(p.getCodigo())) {
