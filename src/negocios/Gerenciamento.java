@@ -61,4 +61,17 @@ public class Gerenciamento {
 		aluno.getMatriculas().disciplinaCursando(disciplina).adicionarNota(nota, numeroProva);	
 	    }
 	}
+	public RepoPessoas getPessoas() {
+		return pessoas;
+	}
+	public void setPessoas(RepoPessoas pessoas) {
+		this.pessoas = pessoas;
+	}
+	public Pessoa getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Pessoa usuario) {
+		this.usuario = usuario;
+	}
+	
 }
