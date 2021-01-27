@@ -3,9 +3,7 @@ package gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import main.Main;
 import negocios.bean.Aluno;
 import negocios.bean.Pessoa;
@@ -23,11 +21,15 @@ public class CadastroController implements Initializable {
     PasswordField senha;
 
     @FXML
+    private ToggleGroup tipoConta;
+
+    @FXML
     private void cadastrar(ActionEvent event) throws IOException {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        RadioButton radio = (RadioButton) tipoConta.getSelectedToggle();
         alerta.setTitle("Alerta");
         alerta.setHeaderText(null);
-        alerta.setContentText("Login: " + login.getText() + " | Senha: " + senha.getText());
+        alerta.setContentText("Login: " + login.getText() + " | Senha: " + senha.getText() + " | Tipo: " + radio.getText());
         alerta.showAndWait();
     }
 
