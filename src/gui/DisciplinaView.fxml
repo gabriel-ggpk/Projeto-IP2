@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisciplinaViewController">
+   <children>
+      <Label fx:id="lblTest" layoutX="194.0" layoutY="99.0" prefHeight="17.0" prefWidth="126.0" />
+   </children>
+</AnchorPane>

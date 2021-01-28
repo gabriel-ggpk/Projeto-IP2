@@ -11,7 +11,7 @@ public class Gerenciamento {
 	private Pessoa usuario;
 	private Gerenciamento() {
 		pessoas = new RepoPessoas();
-		usuario = new Aluno("gabriel",null,null);
+		testes();
 	}
 	private static Gerenciamento _inst;
 	public static Gerenciamento getInstMain() {
@@ -38,7 +38,18 @@ public class Gerenciamento {
 	public void logOut() {
 		usuario = null;
 	}
-	
+	private void testes() {
+		Pessoa teste = new Aluno("gabriel","123","123");
+		pessoas.adicionar(teste);
+		Disciplina tested01 = new Disciplina("mat", 50, 50);
+		Disciplina tested02 = new Disciplina("fis", 50, 50);
+		Disciplina tested03 = new Disciplina("art", 50, 50);
+		Disciplina tested04 = new Disciplina("bio", 50, 50);
+		matricularAluno(((Aluno)teste),tested01,2020.1);
+		matricularAluno(((Aluno)teste),tested02,2020.1);
+		matricularAluno(((Aluno)teste),tested03,2020.1);
+		matricularAluno(((Aluno)teste),tested04,2020.1);
+	}
 	public void cadastrarPessoa(Pessoa pessoa) {
 		if(!pessoas.getPessoas().contains(pessoa)) pessoas.adicionar(pessoa);
 		else System.out.println("pessoa ja existente");
@@ -74,9 +85,6 @@ public class Gerenciamento {
 	}
 	public RepoPessoas getPessoas() {
 		return pessoas;
-	}
-	public void setPessoas(RepoPessoas pessoas) {
-		this.pessoas = pessoas;
 	}
 	public Pessoa getUsuario() {
 		return usuario;

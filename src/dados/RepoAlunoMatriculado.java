@@ -36,22 +36,49 @@ public class RepoAlunoMatriculado {
 		return matriculasDoSemestre;
 	}
 	
-	public ArrayList<AlunoMatriculado> buscarDisciplina(Disciplina disciplina) {
+	public ArrayList<AlunoMatriculado> buscarDisciplinas(Disciplina disciplina) {
 		ArrayList<AlunoMatriculado> matriculasNaDisciplina = new ArrayList<>();
 		
 		for (int n = 0; n < matriculas.size(); n++) {
-			if (matriculas.get(n).getDisciplina() == disciplina) {
+			if (matriculas.get(n).getDisciplina().equals(disciplina)) {
 				matriculasNaDisciplina.add(matriculas.get(n));
 			}
 		}
 		
 		return matriculasNaDisciplina;
 	}
+	public ArrayList<AlunoMatriculado> buscarDisciplinas(String nome) {
+		ArrayList<AlunoMatriculado> matriculasNaDisciplina = new ArrayList<>();
+		
+		for (int n = 0; n < matriculas.size(); n++) {
+			if (matriculas.get(n).getDisciplina().getNome().equals(nome)) {
+				matriculasNaDisciplina.add(matriculas.get(n));
+			}
+		}
+		
+		return matriculasNaDisciplina;
+	}
+	public AlunoMatriculado buscarDisciplina(String nome) {
+		for(AlunoMatriculado m: matriculas) {
+			if(m.getDisciplina().getNome().equals(nome)&&m.isCursando()) return m;
+		}
+		return null;
+	}
+	
 	public AlunoMatriculado disciplinaCursando(Disciplina disciplina) {
 		for(AlunoMatriculado m: matriculas) {
 			if(m.getDisciplina().equals(disciplina)&&m.isCursando()) return m;
 		}
 		return null;
+	}
+	public ArrayList<AlunoMatriculado> disciplinasCursando(){
+		ArrayList<AlunoMatriculado> cadeirasCursando = new ArrayList<AlunoMatriculado>();
+		for(AlunoMatriculado m : matriculas) {
+			if(m.isCursando()&& cadeirasCursando.size()<4) {
+				cadeirasCursando.add(m);
+			}
+		}
+		return cadeirasCursando;
 	}
 	
 }
