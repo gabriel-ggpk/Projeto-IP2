@@ -73,7 +73,7 @@ public class AlunoMatriculado {
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		String notasString = "[";
 		for (int i = 0; i < this.getNotas().length; i++) {
@@ -85,6 +85,19 @@ public class AlunoMatriculado {
 
 		return String.format("Aluno Matriculado%n%s%n%s%nSemestre: %.1f | Notas: %s | Faltas: %d",
 				this.getAluno(), this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
+	}*/
+	@Override
+	public String toString() {
+		String notasString = "[";
+		for (int i = 0; i < this.getNotas().length; i++) {
+			notasString += this.getNotas()[i];
+			if(i < this.getNotas().length - 1)
+				notasString += ", ";
+		}
+		notasString += "]";
+
+		return String.format("%s%n%.1f | Notas: %s | Faltas: %d",
+				 this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
 	}
 
 }

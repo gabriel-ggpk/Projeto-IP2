@@ -44,11 +44,11 @@ public class Gerenciamento {
 		Disciplina tested01 = new Disciplina("mat", 50, 50);
 		Disciplina tested02 = new Disciplina("fis", 50, 50);
 		Disciplina tested03 = new Disciplina("art", 50, 50);
-		Disciplina tested04 = new Disciplina("bio", 50, 50);
+		//Disciplina tested04 = new Disciplina("bio", 50, 50);
 		matricularAluno(((Aluno)teste),tested01,2020.1);
 		matricularAluno(((Aluno)teste),tested02,2020.1);
 		matricularAluno(((Aluno)teste),tested03,2020.1);
-		matricularAluno(((Aluno)teste),tested04,2020.1);
+		//matricularAluno(((Aluno)teste),tested04,2020.1);
 	}
 	public void cadastrarPessoa(Pessoa pessoa) {
 		if(!pessoas.getPessoas().contains(pessoa)) pessoas.adicionar(pessoa);

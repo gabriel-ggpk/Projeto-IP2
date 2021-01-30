@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -18,13 +23,12 @@ import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
 public class AlunoController implements Initializable {
 	@FXML
-private	Label nomeAluno;
+  private	Label nomeAluno;
 	@FXML
-	Hyperlink disciplina01,disciplina02,disciplina03,disciplina04;
-	@FXML
-	ArrayList<Hyperlink> links;
+    private ComboBox<AlunoMatriculado> cb;
 	
 	ArrayList<AlunoMatriculado> disciplinas;
+	ObservableList<AlunoMatriculado> disciplinasObs;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
 		settings();
@@ -33,14 +37,10 @@ private	Label nomeAluno;
 	public void settings() {
 		nomeAluno.setText(Gerenciamento.getInstMain().getUsuario().getNome());
 		Pessoa usuario = Gerenciamento.getInstMain().getUsuario();
-		if(usuario instanceof Aluno) {
 		disciplinas = ((Aluno)usuario).getMatriculas().disciplinasCursando();
-		disciplina01.setText(((Aluno)usuario).getMatriculas().buscarDisciplina("mat").getDisciplina().getNome());
-		setDisciplinas();
-		for(int x = 0;x<4;x++) {
-			links.get(x).setText(disciplinas.get(x).getDisciplina().getNome());
-			}
-		}
+		
+		set();
+		
 	}
 	public void mudarCenaDisciplina() {
 		 try {
@@ -48,7 +48,7 @@ private	Label nomeAluno;
 	            Parent root = (Parent) loader.load();
 
 	           DisciplinaViewController Controller=loader.getController();
-	           Controller.disciplinaEspecifica(disciplinas.get(0).getDisciplina());
+	           Controller.disciplinaEspecifica(disciplinas.get(cb.getSelectionModel().getSelectedIndex()));
 	           
 	            Stage stage=new Stage();
 	            stage.setScene(new Scene(root));
@@ -57,11 +57,9 @@ private	Label nomeAluno;
 	            e.printStackTrace();
 	        }
 	}
-	public void setDisciplinas() {
-		links = new ArrayList<Hyperlink>();
-		links.add(disciplina01);
-		links.add(disciplina02);
-		links.add(disciplina03);
-		links.add(disciplina04);
+	
+	private void set() {
+		disciplinasObs = FXCollections.observableArrayList(disciplinas);
+		cb.setItems(disciplinasObs);
 	}
 }
