@@ -25,13 +25,15 @@ private	Label nomeAluno;
 	Hyperlink disciplina01,disciplina02,disciplina03,disciplina04;
 	@FXML
 	ArrayList<Hyperlink> links;
+	
+	ArrayList<AlunoMatriculado> disciplinas;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
 		m = new Main();
 		nomeAluno.setText(Main.getGer().getUsuario().getNome());
 		Pessoa usuario = Main.getGer().getUsuario();
 		if(usuario instanceof Aluno) {
-		ArrayList<AlunoMatriculado> disciplinas = ((Aluno)usuario).getMatriculas().disciplinasCursando();
+		disciplinas = ((Aluno)usuario).getMatriculas().disciplinasCursando();
 		disciplina01.setText(((Aluno)usuario).getMatriculas().buscarDisciplina("mat").getDisciplina().getNome());
 		setDisciplinas();
 		for(int x = 0;x<4;x++) {
@@ -45,8 +47,8 @@ private	Label nomeAluno;
 	            Parent root = (Parent) loader.load();
 
 	           DisciplinaViewController Controller=loader.getController();
-	           Controller.disciplinaEspecifica(nomeAluno.getText());
-
+	           Controller.disciplinaEspecifica(disciplinas.get(0).getDisciplina());
+	           
 	            Stage stage=new Stage();
 	            stage.setScene(new Scene(root));
 	            stage.show();

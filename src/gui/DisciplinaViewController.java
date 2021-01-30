@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import main.Main;
+import negocios.bean.Aluno;
 import negocios.bean.Disciplina;
 
 public class DisciplinaViewController implements Initializable {
@@ -16,7 +18,8 @@ public class DisciplinaViewController implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
-	public void disciplinaEspecifica(String string) {
+	public void disciplinaEspecifica(Disciplina disciplina) {
+		String string = disciplina.getNome();
 		lblTest.setText(string);
 	}
 
