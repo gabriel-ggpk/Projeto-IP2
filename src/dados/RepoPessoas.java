@@ -16,18 +16,16 @@ public class RepoPessoas implements RepositorioPessoas {
 		pessoas.remove(pessoa);
 	}
 	
-	public boolean logIN(String codigo, String senha) {
-		boolean retorno = false;
-		
+	public Pessoa logIN(String codigo, String senha) {
 		for (int n = 0; n < pessoas.size(); n++) {
 			if (pessoas.get(n).getCodigo().equals(codigo)) {
 				if (pessoas.get(n).getSenha().equals(senha)) {
-					retorno = true;
+					return pessoas.get(n);
 				}
 			}
 		}
 		
-		return retorno;
+		return null;
 	}
 	
 	public Pessoa procurar(String codigo) {

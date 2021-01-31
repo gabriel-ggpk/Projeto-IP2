@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
+import negocios.bean.Professor;
 
 public class LoginController implements Initializable {
 	
@@ -30,8 +31,13 @@ public class LoginController implements Initializable {
 
     @FXML
     private void logar(ActionEvent event) throws IOException {
-    	if(Gerenciamento.getInstMain().logIn(login.getText(),senha.getText()) && Gerenciamento.getInstMain().getUsuario() instanceof Aluno ) {
-    		ScreenManager.getInstance().showAlunoScreen();
+    	if(Gerenciamento.getInstMain().logIn(login.getText(),senha.getText())) {
+    		if(Gerenciamento.getInstMain().getUsuario() instanceof Aluno) {
+    			ScreenManager.getInstance().showAlunoScreen();
+    		}
+    		if(Gerenciamento.getInstMain().getUsuario() instanceof Professor) {
+    			ScreenManager.getInstance().showProfessoeScreen();
+    		}
     	}
   
     }

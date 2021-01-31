@@ -1,11 +1,7 @@
 package main;
 
-import java.io.IOException;
-
 import gui.ScreenManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.stage.Stage;
 import negocios.Gerenciamento;
 
@@ -21,14 +17,18 @@ public class Main extends Application {
 	      
 	    primaryStage.show();
     }
-	
-	
 
-	public static Gerenciamento getGer() { return ger; }
+	public static Gerenciamento getGer() { 
+		return ger; 
+	}
 
 	public static void main(String[] args) {
 		ger = Gerenciamento.getInstMain();
 		launch(args);
+	}
+
+	public static Stage getStg() {
+		return stg;
 	}
 
 }

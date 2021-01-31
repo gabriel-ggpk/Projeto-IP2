@@ -8,11 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import main.Main;
-import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
-import negocios.bean.Disciplina;
 
 public class DisciplinaViewController implements Initializable {
 	 @FXML
