@@ -1,6 +1,5 @@
 package gui;
 
-import dados.RepoPessoas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
