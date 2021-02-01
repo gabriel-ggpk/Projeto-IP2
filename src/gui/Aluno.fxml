@@ -20,7 +20,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="491.0" layoutY="227.0" promptText="Periodo" />
+      <TextField fx:id="periodo" layoutX="491.0" layoutY="227.0" promptText="Periodo" />
       <Button fx:id="buscarHistorico" layoutX="510.0" layoutY="273.0" mnemonicParsing="false" onAction="#buscarHistorico" text="Buscar Historico" />
       <Text layoutX="54.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disciplinas">
          <font>

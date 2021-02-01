@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import negocios.bean.Pessoa;
 import negocios.Gerenciamento;
@@ -33,22 +34,10 @@ public class AlunoController implements Initializable {
 	private Pessoa usuario;
 	@FXML
     private Button att;
-
-    @FXML
-    void buscarHistorico() {
-    	/*try {
-	           FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/DisciplinaView.fxml"));
-	           Parent root = (Parent) loader.load();
-	           DisciplinaViewController Controller=loader.getController();
-	           Controller.disciplinaEspecifica(disciplinas.get(cb.getSelectionModel().getSelectedIndex()));
-	          
-	            Stage stage=new Stage();
-	            stage.setScene(new Scene(root));
-	            stage.show();
-	            } catch (IOException e) {
-	            e.printStackTrace();
-	        }*/
-	}
+	 @FXML
+	 private TextField periodo;
+   
+    
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
@@ -90,5 +79,18 @@ public class AlunoController implements Initializable {
 		Gerenciamento.getInstMain().logOut();
 		ScreenManager.getInstance().showLoginScreen();
 		
+	}
+	public void buscarHistorico() {
+    	try {
+	           FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/Historico.fxml"));
+	           Parent root = (Parent) loader.load();
+	           HistoricoController Controller=loader.getController();
+	           Controller.periodoEspecifico(((Aluno)usuario).getMatriculas().getMatriculas(Double.parseDouble(periodo.getText())));
+	            Stage stage=new Stage();
+	            stage.setScene(new Scene(root));
+	            stage.show();
+	            } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 	}
 }
