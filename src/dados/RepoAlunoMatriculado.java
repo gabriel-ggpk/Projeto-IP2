@@ -11,9 +11,9 @@ public class RepoAlunoMatriculado {
 	
 	}
 	
-	public void adicionarMatricula(AlunoMatriculado matricula) {
+	public boolean adicionarMatricula(AlunoMatriculado matricula) {
 		
-			matriculas.add(matricula);
+		return	matriculas.add(matricula);
 		
 		
 	}

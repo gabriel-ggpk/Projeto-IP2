@@ -21,6 +21,7 @@ public class ScreenManager {
             this.loginScene = new Scene(loginPane);
             Parent singUpPane = FXMLLoader.load(getClass().getResource("/gui/Cadastro.fxml"));
             this.cadastroScene = new Scene(singUpPane);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

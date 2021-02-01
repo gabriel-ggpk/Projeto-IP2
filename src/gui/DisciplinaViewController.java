@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,10 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
 
 public class DisciplinaViewController implements Initializable {
-	 @FXML
+	  @FXML
 	    private Label lblName;
 	    @FXML
 	    private Label lblSem;
@@ -32,6 +34,7 @@ public class DisciplinaViewController implements Initializable {
 	    @FXML
 	    private Button btnDesistir;
 	    private ArrayList<Label> notas;
+	    private AlunoMatriculado aluno;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -43,6 +46,7 @@ public class DisciplinaViewController implements Initializable {
 		
 	}
 	public void disciplinaEspecifica(AlunoMatriculado aluno) {
+		this.aluno = aluno;
 		lblName.setText(aluno.getDisciplina().getNome());
 		lblAulas.setText(String.valueOf(aluno.getDisciplina().getAulasTotais()));
 		lblFaltas.setText(String.valueOf(aluno.getFaltas()));
@@ -54,8 +58,10 @@ public class DisciplinaViewController implements Initializable {
 		
 		
 	}
-	public void desistir() {
-		
+	public void desistir() throws ClassNotFoundException, IOException {
+		Gerenciamento.getInstMain().removerMatricula(aluno.getDisciplina());
 	}
+	
+	
 
 }

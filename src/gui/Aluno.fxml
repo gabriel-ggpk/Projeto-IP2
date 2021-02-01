@@ -21,12 +21,13 @@
          </font>
       </Label>
       <TextField layoutX="491.0" layoutY="227.0" promptText="Periodo" />
-      <Button layoutX="510.0" layoutY="273.0" mnemonicParsing="false" text="Buscar Historico" />
+      <Button fx:id="buscarHistorico" layoutX="510.0" layoutY="273.0" mnemonicParsing="false" onAction="#buscarHistorico" text="Buscar Historico" />
       <Text layoutX="54.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disciplinas">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
       <ComboBox fx:id="cb" layoutX="31.0" layoutY="226.0" onAction="#mudarCenaDisciplina" prefHeight="28.0" prefWidth="214.0" />
+      <Button fx:id="logOut" layoutX="330.0" layoutY="373.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
    </children>
 </AnchorPane>

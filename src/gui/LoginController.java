@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
 import negocios.bean.Professor;
@@ -44,5 +45,6 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	
     	}
 }

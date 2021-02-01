@@ -10,12 +10,16 @@ public class Aluno extends Pessoa {
 		matriculas = new RepoAlunoMatriculado();
 	}
 	
-	public void adicionarMatricula(Disciplina disciplina,double semestre) {
+	public boolean adicionarMatricula(Disciplina disciplina,double semestre) {
 		AlunoMatriculado matricula = new AlunoMatriculado(this, disciplina, semestre);
 		if(!matriculas.getMatriculas().contains(matricula)) {
-			this.matriculas.adicionarMatricula(matricula);
+			return this.matriculas.adicionarMatricula(matricula);
 		}
-		else System.out.println("matricula ja existente");
+		else return false;
+	}
+	public boolean removerMatricula(Disciplina disciplina) {
+		return matriculas.getMatriculas().remove(matriculas.disciplinaCursando(disciplina));
+		
 	}
 	
 	public String getNome () {

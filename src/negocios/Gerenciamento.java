@@ -26,14 +26,16 @@ public class Gerenciamento {
 	private void testes() {
 		Pessoa teste = new Aluno("gabriel","123","123");
 		pessoas.adicionar(teste);
+		Pessoa teste2 = new Aluno("gabriel","1234","1234");
+		pessoas.adicionar(teste2);
 		Disciplina tested01 = new Disciplina("mat", 50, 50);
 		Disciplina tested02 = new Disciplina("fis", 50, 50);
 		Disciplina tested03 = new Disciplina("art", 50, 50);
-		//Disciplina tested04 = new Disciplina("bio", 50, 50);
+		Disciplina tested04 = new Disciplina("bio", 50, 50);
 		matricularAluno(((Aluno)teste),tested01,2020.1);
 		matricularAluno(((Aluno)teste),tested02,2020.1);
 		matricularAluno(((Aluno)teste),tested03,2020.1);
-		//matricularAluno(((Aluno)teste),tested04,2020.1);
+		matricularAluno(((Aluno)teste),tested04,2020.1);
 		
 		Disciplina mat = new Disciplina("Mat", 30, 20);
 		Pessoa prof = new Professor("Luca", "000", "000", mat);
@@ -69,6 +71,17 @@ public class Gerenciamento {
 	}
 	public void matricularAluno(Aluno aluno,Disciplina disciplina, double semestre) {
 		aluno.adicionarMatricula(disciplina,semestre);	
+	}
+	public boolean removerMatricula(Disciplina disciplina) {
+		if(usuario instanceof Aluno) {
+			return ((Aluno) usuario).removerMatricula(disciplina);	
+			}
+		return false;
+	}
+	public boolean removerMatricula(Aluno aluno,Disciplina disciplina) {
+		
+			return aluno.removerMatricula(disciplina);	
+			
 	}
 	
 	public void darFalta(Aluno aluno,Disciplina disciplina) {
