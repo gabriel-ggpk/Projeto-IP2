@@ -10,18 +10,31 @@
 
 <AnchorPane fx:id="cena" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroController">
    <children>
-      <Button layoutX="327.0" layoutY="357.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
-      <TextField fx:id="login" layoutX="286.0" layoutY="215.0" />
-      <PasswordField fx:id="senha" layoutX="286.0" layoutY="264.0" />
-      <Label layoutX="286.0" layoutY="198.0" text="Login:" />
-      <Label layoutX="286.0" layoutY="247.0" text="Senha:" />
-      <Label layoutX="336.0" layoutY="136.0" text="Cadastro" />
-      <Label layoutX="285.0" layoutY="297.0" text="Tipo de conta:" />
-      <RadioButton layoutX="285.0" layoutY="321.0" mnemonicParsing="false" text="Aluno">
+      <Label layoutX="286.0" layoutY="75.0" text="Nome:" />
+      <TextField fx:id="nome" layoutX="286.0" layoutY="92.0" />
+      <Label layoutX="286.0" layoutY="128.0" text="Login:" />
+      <TextField fx:id="login" layoutX="286.0" layoutY="145.0" />
+      <Label layoutX="287.0" layoutY="178.0" text="Senha:" />
+      <PasswordField fx:id="senha" layoutX="287.0" layoutY="195.0" />
+      <Label layoutX="340.0" layoutY="58.0" text="Cadastro" />
+      <Label layoutX="287.0" layoutY="233.0" text="Tipo de conta:" />
+      <RadioButton layoutX="287.0" layoutY="257.0" mnemonicParsing="false" onAction="#mostrarDisciplina" selected="true" text="Aluno">
          <toggleGroup>
             <ToggleGroup fx:id="tipoConta" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="364.0" layoutY="321.0" mnemonicParsing="false" text="Professor" toggleGroup="$tipoConta" />
+      <RadioButton layoutX="366.0" layoutY="257.0" mnemonicParsing="false" onAction="#mostrarDisciplina" text="Professor" toggleGroup="$tipoConta" />
+      <AnchorPane fx:id="disciplina" layoutX="290.0" layoutY="284.0" opacity="0.0" prefHeight="109.0" prefWidth="149.0">
+         <children>
+            <Label text="Disciplina:" />
+            <Label layoutY="19.0" text="Nome:" />
+            <TextField fx:id="nomedis" layoutY="36.0" />
+            <Label layoutX="1.0" layoutY="68.0" text="Vagas:" />
+            <TextField fx:id="vagasdis" layoutY="85.0" onKeyTyped="#removeLetra" prefHeight="25.0" prefWidth="71.0" />
+            <Label layoutX="78.0" layoutY="68.0" text="AulasTotais:" />
+            <TextField fx:id="aulasdis" layoutX="78.0" layoutY="85.0" onKeyTyped="#removeLetra" prefHeight="25.0" prefWidth="71.0" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="botaoCadastro" layoutX="325.0" layoutY="284.0" mnemonicParsing="false" onAction="#cadastrar" scaleZ="10.0" text="Cadastrar" />
    </children>
 </AnchorPane>

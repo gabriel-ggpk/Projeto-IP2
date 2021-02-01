@@ -9,10 +9,11 @@
 
 <AnchorPane fx:id="cena" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
    <children>
-      <PasswordField fx:id="senha" layoutX="286.0" layoutY="264.0" />
-      <TextField fx:id="login" layoutX="286.0" layoutY="215.0" />
+      <Label layoutX="345.0" layoutY="170.0" text="Login" />
       <Label layoutX="286.0" layoutY="198.0" text="Login:" />
+      <TextField fx:id="login" layoutX="286.0" layoutY="215.0" />
       <Label layoutX="286.0" layoutY="247.0" text="Senha:" />
+      <PasswordField fx:id="senha" layoutX="286.0" layoutY="264.0" />
       <Button layoutX="336.0" layoutY="308.0" mnemonicParsing="false" onAction="#logar" text="Entrar" />
       <Hyperlink layoutX="333.0" layoutY="358.0" onAction="#mudarCena" text="Cadastro" />
    </children>
