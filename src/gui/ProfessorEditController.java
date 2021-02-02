@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
 
 public class ProfessorEditController implements Initializable{
@@ -54,7 +53,7 @@ public class ProfessorEditController implements Initializable{
 	
 	@FXML
 	private void tirarFalta(ActionEvent event) {
-		Gerenciamento.getInstMain().tirarFalta(alunoSelecionado.getAluno(), alunoSelecionado.getDisciplina());
+		alunoSelecionado.tirarFalta();
 		aluno.setText(alunoSelecionado.toString());
 	}
 	

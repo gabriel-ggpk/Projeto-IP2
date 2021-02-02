@@ -36,10 +36,12 @@ public class AlunoMatriculado {
 		return faltas;
 	}
 	public void darFalta() {
-		this.faltas = faltas++;
+		this.faltas++;
 	}
 	public void tirarFalta() {
-		this.faltas = faltas--;
+		if(faltas > 0) {
+			this.faltas--;
+		}
 	}
 	public boolean isCursando() {
 		return cursando;
@@ -73,19 +75,6 @@ public class AlunoMatriculado {
 		return true;
 	}
 
-	/*@Override
-	public String toString() {
-		String notasString = "[";
-		for (int i = 0; i < this.getNotas().length; i++) {
-			notasString += this.getNotas()[i];
-			if(i < this.getNotas().length - 1)
-				notasString += ", ";
-		}
-		notasString += "]";
-
-		return String.format("Aluno Matriculado%n%s%n%s%nSemestre: %.1f | Notas: %s | Faltas: %d",
-				this.getAluno(), this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
-	}*/
 	@Override
 	public String toString() {
 		String notasString = "[";
@@ -96,8 +85,8 @@ public class AlunoMatriculado {
 		}
 		notasString += "]";
 
-		return String.format("%s%n%.1f | Notas: %s | Faltas: %d",
-				 this.getDisciplina(), this.getSemestre(), notasString, this.getFaltas());
+		return String.format("Aluno: " + this.getAluno().getNome() + " | " + this.getDisciplina() + " Semestre: " + this.getSemestre() +
+				"\nNotas: " + notasString + " | Faltas: " + this.getFaltas());
 	}
 
 }
