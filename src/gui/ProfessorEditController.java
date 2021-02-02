@@ -48,7 +48,6 @@ public class ProfessorEditController implements Initializable{
 			if(doubNota >= 0 && doubNota <= 10) {
 				alunoSelecionado.adicionarNota(doubNota, intProva);
 				aluno.setText(alunoSelecionado.toString());
-				System.out.println(intProva + " " + doubNota);
 			}
 			else {
 				erro.setText("Valor Invalido");
@@ -75,10 +74,7 @@ public class ProfessorEditController implements Initializable{
 	}
 	
 	public void settings() {
-		provas.add("1");
-		provas.add("2");
-		provas.add("3");
-		provas.add("4");
+		provas.addAll("1", "2", "3", "4");
 		qualProva.setItems(provas);
 	}
 

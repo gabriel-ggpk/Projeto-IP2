@@ -29,7 +29,7 @@ public class Gerenciamento {
 	private void testes() {
 		Pessoa teste = new Aluno("gabriel","123","123");
 		pessoas.adicionar(teste);
-		Pessoa teste2 = new Aluno("gabriel","1234","1234");
+		Pessoa teste2 = new Aluno("roberto","1234","1234");
 		pessoas.adicionar(teste2);
 		Disciplina tested01 = new Disciplina("mat", 50, 50);
 		Disciplina tested02 = new Disciplina("fis", 50, 50);

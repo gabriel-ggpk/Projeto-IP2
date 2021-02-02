@@ -13,8 +13,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
@@ -26,16 +30,23 @@ public class ProfessorController implements Initializable {
 	
 	Professor profAtual;
 	AlunoMatriculado aluno = null;
-	ObservableList<AlunoMatriculado> alunos = FXCollections.observableArrayList();
+	ObservableList<AlunoMatriculado> alunosMatriculadosOL = FXCollections.observableArrayList();
+	ObservableList<Aluno> listaAlunosOL = FXCollections.observableArrayList();
 	
 	@FXML
 	private Label nomeProfessor;
+	
+	@FXML
+	private Label materia;
 	
 	@FXML
 	private Label alunoSelecionado;
 	
 	@FXML
 	private ListView<AlunoMatriculado> caixa;
+	
+	@FXML
+	private ChoiceBox<Aluno> listaAlunos;
 	
 	@FXML
 	private void sair(ActionEvent event) {
@@ -45,9 +56,26 @@ public class ProfessorController implements Initializable {
 
 	@FXML
 	private void clicarAluno() {
+		if(aluno == caixa.getSelectionModel().getSelectedItem()) {
+			cenaAluno(aluno);
+			caixa.getSelectionModel().select(null);
+		}
 		aluno = caixa.getSelectionModel().getSelectedItem();
 		alunoSelecionado.setText(aluno.toString());
-		cenaAluno(aluno);
+	}
+	public void zerar() {
+		alunoSelecionado.setText("");
+		caixa.getSelectionModel().select(null);
+		aluno = null;
+	}
+	
+	@FXML
+	private void cadastrarAluno(ActionEvent event) {
+		Aluno addAluno = listaAlunos.getSelectionModel().getSelectedItem();
+		Gerenciamento.getInstMain().matricularAluno(addAluno, profAtual.getDisciplina(), 2020.1);
+		alunosMatriculadosOL.clear();
+		listaAlunosOL.clear();
+		pegarAlunosMatriculados();
 	}
 	
 	public void cenaAluno(AlunoMatriculado aluno) {
@@ -67,11 +95,14 @@ public class ProfessorController implements Initializable {
 	}
 	
 	public void settings() {
+		alunoSelecionado.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		profAtual = (Professor) Gerenciamento.getInstMain().getUsuario();
-		pegarAlunos();
+		pegarAlunosMatriculados();
 		
 		nomeProfessor.setText(Gerenciamento.getInstMain().getUsuario().getNome());
-		caixa.setItems(alunos);
+		materia.setText(profAtual.getDisciplina().getNome() + " | Vagas: " + alunosMatriculadosOL.size() + "/" + profAtual.getDisciplina().getVagas());
+		caixa.setItems(alunosMatriculadosOL);
+		listaAlunos.setItems(listaAlunosOL);
 	}
 	
 	@Override
@@ -79,7 +110,7 @@ public class ProfessorController implements Initializable {
 		settings();
 	}
 	
-    public void pegarAlunos() {
+    public void pegarAlunosMatriculados() {
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 		pessoas = Gerenciamento.getInstMain().getPessoas().getPessoas();
 		Aluno teste;
@@ -87,7 +118,12 @@ public class ProfessorController implements Initializable {
 		for(int n = 0; n < pessoas.size(); n++) {
 			if(pessoas.get(n) instanceof Aluno) {
 				teste = (Aluno) pessoas.get(n);
-				alunos.addAll(teste.getMatriculas().buscarDisciplinas(profAtual.getDisciplina()));
+				if(teste.getMatriculas().buscarDisciplinas(profAtual.getDisciplina()).size() != 0) {
+					alunosMatriculadosOL.addAll(teste.getMatriculas().buscarDisciplinas(profAtual.getDisciplina()));
+				}
+				else {
+					listaAlunosOL.add(teste);
+				}
 			}
 		}
 	}
