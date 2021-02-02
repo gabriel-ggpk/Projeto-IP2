@@ -1,8 +1,11 @@
 package negocios;
 
 
+import java.util.ArrayList;
+
 import dados.RepoPessoas;
 import negocios.bean.Aluno;
+import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 import negocios.bean.Professor;
@@ -32,10 +35,17 @@ public class Gerenciamento {
 		Disciplina tested02 = new Disciplina("fis", 50, 50);
 		Disciplina tested03 = new Disciplina("art", 50, 50);
 		Disciplina tested04 = new Disciplina("bio", 50, 50);
+		
 		matricularAluno(((Aluno)teste),tested01,2020.1);
 		matricularAluno(((Aluno)teste),tested02,2020.1);
 		matricularAluno(((Aluno)teste),tested03,2020.1);
 		matricularAluno(((Aluno)teste),tested04,2020.1);
+		ArrayList<AlunoMatriculado> testando= ((Aluno)teste).getMatriculas().getMatriculas(2020.1);
+		for(AlunoMatriculado t:testando){t.setCursando(false);}
+		matricularAluno(((Aluno)teste),tested01,2020.2);
+		matricularAluno(((Aluno)teste),tested02,2020.2);
+		matricularAluno(((Aluno)teste),tested03,2020.2);
+		matricularAluno(((Aluno)teste),tested04,2020.2);
 		
 		Disciplina mat = new Disciplina("Mat", 30, 20);
 		Pessoa prof = new Professor("Luca", "000", "000", mat);

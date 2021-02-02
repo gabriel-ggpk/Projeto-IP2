@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,11 +49,20 @@ public class HistoricoController implements Initializable {
 		notas.add(nota3);
 		notas.add(nota4);
 	}
-	public void settings() {
-		
+	public void set() {
+		AlunoMatriculado selected = cb.getSelectionModel().getSelectedItem();
+		disciplina.setText(selected.getDisciplina().getNome());
+		faltas.setText(String.valueOf(selected.getFaltas()));
+		aulasTotais.setText(String.valueOf(selected.getDisciplina().getAulasTotais()));
+		for(int x = 0;x<4;x++) {
+			notas.get(x).setText(String.valueOf(selected.getNotas()[x]));
+		}
     
 }
 	public void periodoEspecifico(ArrayList<AlunoMatriculado> matriculas) {
 		periodo.setText(String.valueOf(matriculas.get(0).getSemestre()));
+		disciplinas = matriculas;
+		disciplinasObs = FXCollections.observableArrayList(disciplinas);
+		cb.setItems(disciplinasObs);
 	}
 }

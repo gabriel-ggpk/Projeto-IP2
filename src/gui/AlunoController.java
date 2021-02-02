@@ -21,6 +21,7 @@ import negocios.bean.Pessoa;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
+import negocios.bean.Disciplina;
 
 public class AlunoController implements Initializable {
 	@FXML
@@ -36,8 +37,8 @@ public class AlunoController implements Initializable {
     private Button att;
 	 @FXML
 	 private TextField periodo;
-   
-    
+	 @FXML
+	 private TextField matriculatxt;
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
@@ -92,5 +93,10 @@ public class AlunoController implements Initializable {
 	            } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	}
+	public void matricular() {
+		Disciplina disciplina = new Disciplina(matriculatxt.getText(), 50, 50);
+		((Aluno)usuario).adicionarMatricula(disciplina, 2020.2);
+		
 	}
 }

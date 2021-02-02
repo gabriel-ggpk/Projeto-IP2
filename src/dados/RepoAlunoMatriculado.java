@@ -74,7 +74,7 @@ public class RepoAlunoMatriculado {
 	public ArrayList<AlunoMatriculado> disciplinasCursando(){
 		ArrayList<AlunoMatriculado> cadeirasCursando = new ArrayList<AlunoMatriculado>();
 		for(AlunoMatriculado m : matriculas) {
-			if(m.isCursando()&& cadeirasCursando.size()<4) {
+			if(m.isCursando()) {
 				cadeirasCursando.add(m);
 			}
 		}

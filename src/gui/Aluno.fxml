@@ -29,5 +29,7 @@
       </Text>
       <ComboBox fx:id="cb" layoutX="31.0" layoutY="226.0" onAction="#mudarCenaDisciplina" prefHeight="28.0" prefWidth="214.0" />
       <Button fx:id="logOut" layoutX="330.0" layoutY="373.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
+      <TextField fx:id="matriculatxt" layoutX="493.0" layoutY="340.0" />
+      <Button fx:id="matricular" layoutX="450.0" layoutY="373.0" mnemonicParsing="false" onAction="#matricular" text="nome da disciplina para matricular-se" />
    </children>
 </AnchorPane>
