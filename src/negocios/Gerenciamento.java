@@ -47,8 +47,7 @@ public class Gerenciamento {
 		matricularAluno(((Aluno)teste),tested03,2020.2);
 		matricularAluno(((Aluno)teste),tested04,2020.2);
 		
-		Disciplina mat = new Disciplina("Mat", 30, 20);
-		Pessoa prof = new Professor("Luca", "000", "000", mat);
+		Pessoa prof = new Professor("Luca", "000", "000", tested01);
 		pessoas.adicionar(prof);
 		
 	}
