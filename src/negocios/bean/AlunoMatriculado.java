@@ -87,6 +87,6 @@ public class AlunoMatriculado {
 
 		return String.format("Aluno: " + this.getAluno().getNome() + " | " + this.getDisciplina() + " Semestre: " + this.getSemestre() +
 				"\nNotas: " + notasString + " | Faltas: " + this.getFaltas());
-	}
+	 }
 
 }
