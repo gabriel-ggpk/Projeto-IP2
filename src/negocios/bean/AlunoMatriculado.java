@@ -29,7 +29,7 @@ public class AlunoMatriculado {
 	public double[] getNotas() {
 		return notas;
 	}
-	public void adicionarNota(double nota, int numeroProva) {
+	public void adicionarNota(double nota, intnumeroProva) {
 		this.notas[numeroProva - 1] = nota;
 	}
 	public int getFaltas() {
