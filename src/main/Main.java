@@ -6,7 +6,11 @@ import javafx.stage.Stage;
 import negocios.Gerenciamento;
 
 public class Main extends Application {
-	
+	/*
+	LOGIN E SENHA DOS TESTES:
+	ALUNO: login: 123 senha: 123
+	PROFESSOR: login 000 senha: 000 
+	*/
 	private static Stage stg;
 	private static Gerenciamento ger;
 	
