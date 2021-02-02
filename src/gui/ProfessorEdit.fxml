@@ -12,7 +12,7 @@
       <Button layoutX="65.0" layoutY="130.0" mnemonicParsing="false" onAction="#darFalta" text="Dar Falta" />
       <Button layoutX="178.0" layoutY="130.0" mnemonicParsing="false" onAction="#tirarFalta" text="Remover Falta" />
       <Button layoutX="372.0" layoutY="130.0" mnemonicParsing="false" text="Reprovar Aluno" />
-      <ChoiceBox layoutX="326.0" layoutY="33.0" prefHeight="25.0" prefWidth="40.0" />
+      <ChoiceBox fx:id="qualProva" layoutX="326.0" layoutY="33.0" prefHeight="25.0" prefWidth="40.0" />
       <TextField fx:id="escreverNota" layoutX="371.0" layoutY="33.0" prefHeight="25.0" prefWidth="99.0" />
       <Button layoutX="380.0" layoutY="87.0" mnemonicParsing="false" onAction="#darNota" text="Aplicar Nota" />
       <Label fx:id="erro" layoutX="384.0" layoutY="58.0" prefHeight="25.0" prefWidth="74.0" textFill="#da1313" />

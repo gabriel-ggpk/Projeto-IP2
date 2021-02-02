@@ -21,6 +21,5 @@
       </Label>
       <ListView fx:id="caixa" layoutX="27.0" layoutY="86.0" onMouseClicked="#clicarAluno" prefHeight="323.0" prefWidth="390.0" />
       <Label fx:id="alunoSelecionado" contentDisplay="TOP" layoutX="429.0" layoutY="86.0" prefHeight="97.0" prefWidth="264.0" wrapText="true" />
-      <Button layoutX="535.0" layoutY="215.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>
