@@ -14,6 +14,7 @@ public class ScreenManager {
     private Scene cadastroScene;
     private Scene alunoScene = null;
     private Scene professorScene = null;
+    private Scene coordenacaorScene = null;
     
     private ScreenManager() {
         try {
@@ -67,6 +68,13 @@ public class ScreenManager {
     	Parent professorPane = FXMLLoader.load(getClass().getResource("/gui/Professor.fxml"));
         this.professorScene = new Scene(professorPane);
     	this.mainStage.setScene(professorScene);
+    	this.mainStage.show();
+    }
+    
+    public void showCoordenacaoScreen() throws IOException {
+    	Parent CoordenacaoPane = FXMLLoader.load(getClass().getResource("/gui/Coordenacao.fxml"));
+        this.coordenacaorScene = new Scene(CoordenacaoPane);
+    	this.mainStage.setScene(coordenacaorScene);
     	this.mainStage.show();
     }
 }

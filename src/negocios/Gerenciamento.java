@@ -3,15 +3,18 @@ package negocios;
 
 import java.util.ArrayList;
 
+import dados.RepoDiscplina;
 import dados.RepoPessoas;
 import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
+import negocios.bean.Coordenacao;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 import negocios.bean.Professor;
 
 public class Gerenciamento {
 	private RepoPessoas pessoas;
+	private RepoDiscplina discplina;
 	private Pessoa usuario;
 	private static Gerenciamento _inst;
 	public static Gerenciamento getInstMain() {
@@ -22,6 +25,7 @@ public class Gerenciamento {
 	}
 	
 	private Gerenciamento() {
+		discplina = new RepoDiscplina();
 		pessoas = new RepoPessoas();
 		testes();
 	}
@@ -31,10 +35,15 @@ public class Gerenciamento {
 		pessoas.adicionar(teste);
 		Pessoa teste2 = new Aluno("roberto","1234","1234");
 		pessoas.adicionar(teste2);
+		
 		Disciplina tested01 = new Disciplina("mat", 50, 50);
+		discplina.adicionar(tested01);
 		Disciplina tested02 = new Disciplina("fis", 50, 50);
+		discplina.adicionar(tested02);
 		Disciplina tested03 = new Disciplina("art", 50, 50);
+		discplina.adicionar(tested03);
 		Disciplina tested04 = new Disciplina("bio", 50, 50);
+		discplina.adicionar(tested04);
 		
 		matricularAluno(((Aluno)teste),tested01,2020.1);
 		matricularAluno(((Aluno)teste),tested02,2020.1);
@@ -50,6 +59,8 @@ public class Gerenciamento {
 		Pessoa prof = new Professor("Luca", "000", "000", tested01);
 		pessoas.adicionar(prof);
 		
+		Pessoa cordenacao = new Coordenacao("Thomas", "111", "111", "departamento");
+		pessoas.adicionar(cordenacao);
 	}
 	
 	public boolean logIn(String codigo, String senha) {
@@ -115,4 +126,7 @@ public class Gerenciamento {
 		this.usuario = usuario;
 	}
 	
+	public RepoDiscplina getDiscplina() {
+		return discplina;
+	}
 }

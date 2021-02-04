@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
+import negocios.bean.Coordenacao;
 import negocios.bean.Professor;
 
 public class LoginController implements Initializable {
@@ -38,6 +39,9 @@ public class LoginController implements Initializable {
     		}
     		if(Gerenciamento.getInstMain().getUsuario() instanceof Professor) {
     			ScreenManager.getInstance().showProfessoeScreen();
+    		}
+    		if(Gerenciamento.getInstMain().getUsuario() instanceof Coordenacao) {
+    			ScreenManager.getInstance().showCoordenacaoScreen();
     		}
     	}
   
