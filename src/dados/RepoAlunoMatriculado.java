@@ -1,6 +1,8 @@
 package dados;
 
 import java.util.ArrayList;
+
+import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 
@@ -47,6 +49,19 @@ public class RepoAlunoMatriculado {
 		
 		return matriculasNaDisciplina;
 	}
+	
+	public ArrayList<Aluno> buscarAlunosDisciplina(Disciplina disciplina) {
+		ArrayList<Aluno> alunosNaDisciplina = new ArrayList<>();
+		
+		for (int n = 0; n < matriculas.size(); n++) {
+			if (matriculas.get(n).getDisciplina().equals(disciplina)) {
+				alunosNaDisciplina.add(matriculas.get(n).getAluno());
+			}
+		}
+		
+		return alunosNaDisciplina;
+	}
+	
 	public ArrayList<AlunoMatriculado> buscarDisciplinas(String nome) {
 		ArrayList<AlunoMatriculado> matriculasNaDisciplina = new ArrayList<>();
 		

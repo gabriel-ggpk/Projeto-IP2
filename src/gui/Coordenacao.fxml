@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CoordenacaoController">
    <children>
-      <Text layoutX="67.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discplinas" wrappingWidth="130.93670654296875" />
-      <ComboBox fx:id="comboBox" layoutX="67.0" layoutY="73.0" prefHeight="26.0" prefWidth="175.0" />
+      <Text layoutX="67.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discplinas" wrappingWidth="130.93670654296875" />
+      <ComboBox fx:id="comboBoxMateria" layoutX="67.0" layoutY="86.0" onAction="#selecianar1" prefHeight="26.0" prefWidth="175.0" />
+      <Text layoutX="340.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pessoa" />
+      <ComboBox fx:id="comboBoxPessoa" layoutX="340.0" layoutY="86.0" onAction="#selecionar2" prefHeight="26.0" prefWidth="175.0" />
+      <ListView fx:id="Lista" layoutX="67.0" layoutY="127.0" prefHeight="252.0" prefWidth="456.0" />
    </children>
 </AnchorPane>
