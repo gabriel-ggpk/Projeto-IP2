@@ -6,7 +6,7 @@ public class AlunoMatriculado {
 	private double semestre;
 	private double[] notas;
 	private int faltas;
-	private boolean cursando;
+	private int cursando;
 	
 	public AlunoMatriculado(Aluno aluno, Disciplina disciplina, double semestre) {
 		this.aluno = aluno;
@@ -14,7 +14,7 @@ public class AlunoMatriculado {
 		this.semestre = semestre;
 		this.notas = new double[4];
 		this.faltas = 0;
-		cursando = true;
+		cursando = 0;
 	}
 	
 	public Aluno getAluno() {
@@ -29,12 +29,17 @@ public class AlunoMatriculado {
 	public double[] getNotas() {
 		return notas;
 	}
-	public void adicionarNota(double nota, int numeroProva) {
-		this.notas[numeroProva - 1] = nota;
-	}
 	public int getFaltas() {
 		return faltas;
 	}
+	public int getCursando() {
+		return cursando;
+	}
+	
+	public void adicionarNota(double nota, int numeroProva) {
+		this.notas[numeroProva - 1] = nota;
+	}
+	
 	public void darFalta() {
 		this.faltas++;
 	}
@@ -43,11 +48,23 @@ public class AlunoMatriculado {
 			this.faltas--;
 		}
 	}
-	public boolean isCursando() {
-		return cursando;
+	
+	public String isCursando() {
+		if(cursando == 0) {
+			return "Cursando";
+		}
+		if(cursando == 1) {
+			return "Aprovado";
+		}
+		if(cursando == -1) {
+			return "Reprovado";
+		}
+		else {
+			return "Erro";
+		}
 	}
-	public void setCursando(boolean cursando) {
-		this.cursando = cursando;
+	public void setCursando(int status) {
+		this.cursando = status;
 	}
 	
 
@@ -85,8 +102,8 @@ public class AlunoMatriculado {
 		}
 		notasString += "]";
 
-		return String.format("Aluno: " + this.getAluno().getNome() + " | " + this.getDisciplina() + " Semestre: " + this.getSemestre() +
-				"\nNotas: " + notasString + " | Faltas: " + this.getFaltas());
+		return String.format("Aluno: " + this.getAluno().getNome() + " Disciplina: " + this.getDisciplina() + " Semestre: " + this.getSemestre() +
+				"\nNotas: " + notasString + " Faltas: " + this.getFaltas() + " Status: " + this.isCursando());
 	 }
 
 }

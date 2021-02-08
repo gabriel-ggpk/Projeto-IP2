@@ -60,21 +60,21 @@ public class RepoAlunoMatriculado {
 	}
 	public AlunoMatriculado buscarDisciplina(String nome) {
 		for(AlunoMatriculado m: matriculas) {
-			if(m.getDisciplina().getNome().equals(nome)&&m.isCursando()) return m;
+			if(m.getDisciplina().getNome().equals(nome)&&m.getCursando() == 0) return m;
 		}
 		return null;
 	}
 	
 	public AlunoMatriculado disciplinaCursando(Disciplina disciplina) {
 		for(AlunoMatriculado m: matriculas) {
-			if(m.getDisciplina().equals(disciplina)&&m.isCursando()) return m;
+			if(m.getDisciplina().equals(disciplina)&&m.getCursando() == 0) return m;
 		}
 		return null;
 	}
 	public ArrayList<AlunoMatriculado> disciplinasCursando(){
 		ArrayList<AlunoMatriculado> cadeirasCursando = new ArrayList<AlunoMatriculado>();
 		for(AlunoMatriculado m : matriculas) {
-			if(m.isCursando()) {
+			if(m.getCursando() == 0) {
 				cadeirasCursando.add(m);
 			}
 		}

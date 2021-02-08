@@ -50,7 +50,7 @@ public class Gerenciamento {
 		matricularAluno(((Aluno)teste),tested03,2020.1);
 		matricularAluno(((Aluno)teste),tested04,2020.1);
 		ArrayList<AlunoMatriculado> testando= ((Aluno)teste).getMatriculas().getMatriculas(2020.1);
-		for(AlunoMatriculado t:testando){t.setCursando(false);}
+		for(AlunoMatriculado t:testando){t.setCursando(-1);}
 		matricularAluno(((Aluno)teste),tested01,2020.2);
 		matricularAluno(((Aluno)teste),tested02,2020.2);
 		matricularAluno(((Aluno)teste),tested03,2020.2);

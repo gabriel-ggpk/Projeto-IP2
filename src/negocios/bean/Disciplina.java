@@ -41,6 +41,6 @@ public class Disciplina {
 	}*/
 	@Override
 	public String toString() {
-		return String.format("Disciplina: %s |", this.getNome());
+		return String.format("%s", this.getNome());
 	}
 }

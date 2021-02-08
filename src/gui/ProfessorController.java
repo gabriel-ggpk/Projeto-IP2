@@ -60,8 +60,11 @@ public class ProfessorController implements Initializable {
 			cenaAluno(aluno);
 			caixa.getSelectionModel().select(null);
 		}
-		aluno = caixa.getSelectionModel().getSelectedItem();
-		alunoSelecionado.setText(aluno.toString());
+		else {
+			aluno = caixa.getSelectionModel().getSelectedItem();
+		    alunoSelecionado.setText(aluno.toString());
+		}
+		
 	}
 	public void zerar() {
 		alunoSelecionado.setText("");
@@ -72,7 +75,7 @@ public class ProfessorController implements Initializable {
 	@FXML
 	private void cadastrarAluno(ActionEvent event) {
 		Aluno addAluno = listaAlunos.getSelectionModel().getSelectedItem();
-		Gerenciamento.getInstMain().matricularAluno(addAluno, profAtual.getDisciplina(), 2020.1);
+		Gerenciamento.getInstMain().matricularAluno(addAluno, profAtual.getDisciplina(), 2020.2);
 		alunosMatriculadosOL.clear();
 		listaAlunosOL.clear();
 		pegarAlunosMatriculados();
@@ -99,8 +102,8 @@ public class ProfessorController implements Initializable {
 		profAtual = (Professor) Gerenciamento.getInstMain().getUsuario();
 		pegarAlunosMatriculados();
 		
-		nomeProfessor.setText(Gerenciamento.getInstMain().getUsuario().getNome());
-		materia.setText(profAtual.getDisciplina().getNome() + " | Vagas: " + alunosMatriculadosOL.size() + "/" + profAtual.getDisciplina().getVagas());
+		nomeProfessor.setText(Gerenciamento.getInstMain().getUsuario().getNome() + " Disciplina: " + profAtual.getDisciplina().getNome());
+		materia.setText("Vagas: " + alunosMatriculadosOL.size() + "/" + profAtual.getDisciplina().getVagas());
 		caixa.setItems(alunosMatriculadosOL);
 		listaAlunos.setItems(listaAlunosOL);
 	}
