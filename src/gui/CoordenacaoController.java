@@ -1,6 +1,5 @@
 package gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,19 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 import negocios.Gerenciamento;
-import negocios.bean.Aluno;
-import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
-import negocios.bean.Professor;
 
 
 
@@ -48,10 +40,10 @@ public class CoordenacaoController implements Initializable{
 		if(comboBoxMateria.getSelectionModel().getSelectedItem() != null && comboBoxPessoa.getSelectionModel().getSelectedItem() != null) {
 			listagem.clear();
 			if(comboBoxPessoa.getSelectionModel().getSelectedItem() == "Professor") {
-				listagem.add(Gerenciamento.getInstMain().getDiscplina().devolverProfessor(comboBoxMateria.getSelectionModel().getSelectedItem()));
+				listagem.add(Gerenciamento.getInstMain().getPessoas().getProfessor(comboBoxMateria.getSelectionModel().getSelectedItem()));
 			}
 			else {
-				listagem.addAll(Gerenciamento.getInstMain().getDiscplina().devolverAluno(comboBoxMateria.getSelectionModel().getSelectedItem()));
+				listagem.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getAlunosDisciplina(comboBoxMateria.getSelectionModel().getSelectedItem()));
 			}
 			listagemOL = FXCollections.observableArrayList(listagem);
 			Lista.setItems(listagemOL);

@@ -2,6 +2,7 @@ package dados;
 
 import java.util.ArrayList;
 import negocios.bean.Aluno;
+import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 import negocios.bean.Professor;
 
@@ -69,6 +70,21 @@ public class RepoPessoas implements RepositorioPessoas {
 		}
 		
 		return Professor;
+	}
+	public Professor getProfessor(Disciplina disciplina) {
+		Professor professor;
+		
+		for(int n = 0; n < pessoas.size(); n++) {
+			if(pessoas.get(n) instanceof Professor) {
+				professor = (Professor) pessoas.get(n);
+				if(professor.getDisciplina().equals(disciplina)) {
+					return professor;
+				}
+				
+			}
+		}
+		
+		return null;
 	}
 	
 	public ArrayList<Pessoa> getPessoas() {
