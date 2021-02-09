@@ -22,13 +22,13 @@ public class ProfessorEditController implements Initializable{
 	private Label aluno;
 	
 	@FXML
-	private ChoiceBox<String> qualProva;
-	
-	@FXML
 	private Label erro;
 	
 	@FXML
 	private TextField escreverNota;
+	
+	@FXML
+	private ChoiceBox<String> qualProva;
 	
 	@FXML
 	private void darNota(ActionEvent event) {
@@ -61,10 +61,25 @@ public class ProfessorEditController implements Initializable{
 		alunoSelecionado.darFalta();
 		aluno.setText(alunoSelecionado.toString());
 	}
-	
 	@FXML
 	private void tirarFalta(ActionEvent event) {
 		alunoSelecionado.tirarFalta();
+		aluno.setText(alunoSelecionado.toString());
+	}
+	
+	@FXML
+	private void reprovar(ActionEvent event) {
+		alunoSelecionado.setCursando(-1);
+		aluno.setText(alunoSelecionado.toString());
+	}
+	@FXML
+	private void cursando(ActionEvent event) {
+		alunoSelecionado.setCursando(0);
+		aluno.setText(alunoSelecionado.toString());
+	}
+	@FXML
+	private void aprovar(ActionEvent event) {
+		alunoSelecionado.setCursando(1);
 		aluno.setText(alunoSelecionado.toString());
 	}
 	

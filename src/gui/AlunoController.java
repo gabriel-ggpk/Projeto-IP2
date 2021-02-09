@@ -24,21 +24,22 @@ import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 
 public class AlunoController implements Initializable {
+	ArrayList<AlunoMatriculado> disciplinas;
+	ObservableList<AlunoMatriculado> disciplinasObs;
+	private Pessoa usuario;
+	
 	@FXML
-  private	Label nomeAluno;
+    private	Label nomeAluno;
 	@FXML
     private ComboBox<AlunoMatriculado> cb;
 	@FXML
     private Button logOut;
-	ArrayList<AlunoMatriculado> disciplinas;
-	ObservableList<AlunoMatriculado> disciplinasObs;
-	private Pessoa usuario;
 	@FXML
     private Button att;
-	 @FXML
-	 private TextField periodo;
-	 @FXML
-	 private TextField matriculatxt;
+	@FXML
+	private TextField periodo;
+	@FXML
+	private TextField matriculatxt;
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) { 
@@ -47,13 +48,13 @@ public class AlunoController implements Initializable {
 	public void settings() {
 		nomeAluno.setText(Gerenciamento.getInstMain().getUsuario().getNome());
 		usuario = Gerenciamento.getInstMain().getUsuario();
-		disciplinas = ((Aluno)usuario).getMatriculas().disciplinasCursando();
+		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAlunoCursando((Aluno)usuario);
 		
 		set();
 		
 	}
 	public void mudarCenaDisciplina() throws InterruptedException {
-		disciplinas = ((Aluno)usuario).getMatriculas().disciplinasCursando();
+		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAluno((Aluno)usuario);
 		   set(); 
 		try {
 			   
@@ -86,7 +87,7 @@ public class AlunoController implements Initializable {
 	           FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/Historico.fxml"));
 	           Parent root = (Parent) loader.load();
 	           HistoricoController Controller=loader.getController();
-	           Controller.periodoEspecifico(((Aluno)usuario).getMatriculas().getMatriculas(Double.parseDouble(periodo.getText())));
+	           Controller.periodoEspecifico(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasSemestre(Double.parseDouble(periodo.getText())));
 	            Stage stage=new Stage();
 	            stage.setScene(new Scene(root));
 	            stage.show();
@@ -96,7 +97,6 @@ public class AlunoController implements Initializable {
 	}
 	public void matricular() {
 		Disciplina disciplina = new Disciplina(matriculatxt.getText(), 50, 50);
-		((Aluno)usuario).adicionarMatricula(disciplina, 2020.2);
-		
+		Gerenciamento.getInstMain().matricularAluno(disciplina, 2020.2);
 	}
 }

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +22,6 @@ import javafx.stage.Stage;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
-import negocios.bean.Pessoa;
 import negocios.bean.Professor; 	
 
 public class ProfessorController implements Initializable {
@@ -58,7 +56,7 @@ public class ProfessorController implements Initializable {
 	private void clicarAluno() {
 		if(aluno == caixa.getSelectionModel().getSelectedItem()) {
 			cenaAluno(aluno);
-			caixa.getSelectionModel().select(null);
+			this.zerar();
 		}
 		else {
 			aluno = caixa.getSelectionModel().getSelectedItem();
@@ -114,20 +112,11 @@ public class ProfessorController implements Initializable {
 	}
 	
     public void pegarAlunosMatriculados() {
-		ArrayList<Pessoa> pessoas = new ArrayList<>();
-		pessoas = Gerenciamento.getInstMain().getPessoas().getPessoas();
-		Aluno teste;
-		
-		for(int n = 0; n < pessoas.size(); n++) {
-			if(pessoas.get(n) instanceof Aluno) {
-				teste = (Aluno) pessoas.get(n);
-				if(teste.getMatriculas().buscarDisciplinas(profAtual.getDisciplina()).size() != 0) {
-					alunosMatriculadosOL.addAll(teste.getMatriculas().buscarDisciplinas(profAtual.getDisciplina()));
-				}
-				else {
-					listaAlunosOL.add(teste);
-				}
-			}
-		}
+    	ArrayList<Aluno> alunoDisipl = Gerenciamento.getInstMain().getPessoas().getAlunos();
+    	alunoDisipl.removeAll(Gerenciamento.getInstMain().getAlunoMatriculado().getAlunosDisciplina(profAtual.getDisciplina()));
+    	listaAlunosOL.addAll(alunoDisipl);
+    	
+		alunosMatriculadosOL.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasDisciplina(profAtual.getDisciplina()));
+    	
 	}
 }
