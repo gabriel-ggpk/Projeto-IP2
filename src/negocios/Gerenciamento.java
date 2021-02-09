@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dados.RepoAlunoMatriculado;
 import dados.RepoDiscplina;
 import dados.RepoPessoas;
+import dados.RepoSemestres;
 import exceptions.ContaNaoExisteException;
 import exceptions.LoginJaExisteException;
 import negocios.bean.Aluno;
@@ -18,6 +19,7 @@ public class Gerenciamento {
 	private RepoPessoas pessoas;
 	private RepoDiscplina discplina;
 	private RepoAlunoMatriculado alunosMatriculados;
+	private RepoSemestres semestres;
 	private Pessoa usuario;
 	private static Gerenciamento _inst;
 	public static Gerenciamento getInstMain() {
@@ -31,10 +33,14 @@ public class Gerenciamento {
 		discplina = new RepoDiscplina();
 		pessoas = new RepoPessoas();
 		alunosMatriculados = new RepoAlunoMatriculado();
+		semestres = new RepoSemestres();
 		testes();
 	}
 	
 	private void testes() {
+		semestres.adicionarSemestre(2020.1);
+		semestres.adicionarSemestre(2020.2);
+		
 		Pessoa Aluno1 = new Aluno("gabriel","123","123");
 		pessoas.adicionar(Aluno1);
 		Pessoa Aluno2 = new Aluno("roberto","1234","1234");
@@ -107,17 +113,7 @@ public class Gerenciamento {
 		AlunoMatriculado matricula = new AlunoMatriculado(aluno, disciplina, semestre);
 		alunosMatriculados.adicionarMatricula(matricula);	
 	}
-	/*
-	public boolean removerMatricula(Disciplina disciplina) {
-		if(usuario instanceof Aluno) {
-			return ((Aluno) usuario).removerMatricula(disciplina);	
-			}
-		return false;
-	}
-	public boolean removerMatricula(Aluno aluno,Disciplina disciplina) {
-			return aluno.removerMatricula(disciplina);	
-	}
-	*/
+	
 	public RepoPessoas getPessoas() {
 		return pessoas;
 	}
