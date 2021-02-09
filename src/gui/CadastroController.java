@@ -1,10 +1,12 @@
 package gui;
 
+import exceptions.LoginJaExisteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
@@ -31,18 +33,23 @@ public class CadastroController implements Initializable {
     private AnchorPane disciplina;
 
     @FXML
-    private Button botaoCadastro;
+    private Button botaoCadastro, botaoVoltar;
 
     @FXML
     private void mostrarDisciplina(ActionEvent event) {
         RadioButton radio = (RadioButton) tipoConta.getSelectedToggle();
         if (radio.getText().equals("Professor")) {
             disciplina.setOpacity(1);
-            botaoCadastro.setLayoutY(404);
+            botaoCadastro.setLayoutY(404);botaoVoltar.setLayoutY(404);
         } else {
             disciplina.setOpacity(0);
-            botaoCadastro.setLayoutY(284);
+            botaoCadastro.setLayoutY(284);botaoVoltar.setLayoutY(284);
         }
+    }
+
+    @FXML
+    private void tiraBorda(MouseEvent event) {
+        login.setStyle("-fx-border-color: null");
     }
 
     @FXML
@@ -87,10 +94,30 @@ public class CadastroController implements Initializable {
                                 Integer.parseInt(vagasdis.getText())));
             }
 
-            Gerenciamento.getInstMain().cadastrarPessoa(add);
-            ScreenManager.getInstance().showLoginScreen();
+            try {
+                Gerenciamento.getInstMain().cadastrarPessoa(add);
+                showLogin();
+            } catch(LoginJaExisteException err) {
+                login.setStyle("-fx-border-color: #f00;");
+                alerta.setContentText("Login já existente");
+                alerta.showAndWait();
+            }
         }
     }
+
+    @FXML
+    private void showLogin() {
+        ScreenManager.getInstance().showLoginScreen();
+        limparDados();
+    }
+
+    private void limparDados() {
+        nome.setText("");login.setText("");login.setStyle("-fx-border-color: null");senha.setText("");nomedis.setText("");vagasdis.setText("");
+        aulasdis.setText("");tipoConta.selectToggle(tipoConta.getSelectedToggle().getToggleGroup().getToggles().get(0));
+        disciplina.setOpacity(0);
+        botaoCadastro.setLayoutY(284);botaoVoltar.setLayoutY(284);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

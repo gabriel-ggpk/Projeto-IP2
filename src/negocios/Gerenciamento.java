@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import dados.RepoAlunoMatriculado;
 import dados.RepoDiscplina;
 import dados.RepoPessoas;
+import exceptions.ContaNaoExisteException;
+import exceptions.LoginJaExisteException;
 import negocios.bean.Aluno;
 import negocios.bean.AlunoMatriculado;
 import negocios.bean.Coordenacao;
@@ -68,24 +70,32 @@ public class Gerenciamento {
 		pessoas.adicionar(cordenacao);
 	}
 	
-	public boolean logIn(String codigo, String senha) {
+	public boolean logIn(String codigo, String senha) throws ContaNaoExisteException {
 		usuario = pessoas.logIN(codigo, senha);
-		if(usuario != null) {
-			return true;
+		if(usuario == null) {
+			throw new ContaNaoExisteException(codigo, senha);
 		}
-		return false;
+		return true;
 	}
 	public void logOut() {
 		usuario = null;
 	}
 	
-	public void cadastrarPessoa(Pessoa pessoa) {
-		if(!pessoas.getPessoas().contains(pessoa)) pessoas.adicionar(pessoa);
-		else System.out.println("pessoa ja existente");
+	public void cadastrarPessoa(Pessoa pessoa) throws LoginJaExisteException {
+		boolean existe = false;
+		for(Pessoa p : pessoas.getPessoas()) {
+			if (p.getCodigo().equals(pessoa.getCodigo())) {
+				existe = true;
+				break;
+			}
+		}
+
+		if(!existe) pessoas.adicionar(pessoa);
+		else throw new LoginJaExisteException(pessoa.getCodigo());
 	}
 	public void removerPessoa(Pessoa pessoa) {
 		if(!pessoas.getPessoas().contains(pessoa)) pessoas.remover(pessoa);
-		else System.out.println("pessoa não existente");
+		else System.out.println("pessoa nï¿½o existente");
 	}
 	
 	public void matricularAluno(Disciplina disciplina, double semestre) {
