@@ -101,7 +101,7 @@ public class Gerenciamento {
 	}
 	public void removerPessoa(Pessoa pessoa) {
 		if(!pessoas.getPessoas().contains(pessoa)) pessoas.remover(pessoa);
-		else System.out.println("pessoa n�o existente");
+		else System.out.println("Pessoa n�o existente");
 	}
 	
 	public void matricularAluno(Disciplina disciplina, double semestre) {
