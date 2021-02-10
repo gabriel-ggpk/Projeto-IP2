@@ -49,7 +49,7 @@ public class MatriculaAlunoController implements Initializable {
 		aulasTotais.setText(String.valueOf(selected.getAulasTotais()));
     }
     @FXML
-    boolean matricular() {//2020,1 é um placeholder
+    boolean matricular() {
     Disciplina selected = lv.getSelectionModel().getSelectedItem();
     for(AlunoMatriculado m:Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAlunoCursando(aluno)) {
     	lv.getSelectionModel().clearSelection();
@@ -59,9 +59,10 @@ public class MatriculaAlunoController implements Initializable {
 		}
     	if(m.getDisciplina().getVagas()<=m.getDisciplina().getVagasPreenchidas()) {
     		alert("Não há mais vagas para esta turma");
+    		return false;
     	}
     }
-    Gerenciamento.getInstMain().matricularAluno(aluno, selected, 2020.2);
+    Gerenciamento.getInstMain().matricularAluno(aluno, selected, Gerenciamento.getInstMain().getSemestres().getSemestreAtual());
     return true;
     }
     void alert(String alert) {
