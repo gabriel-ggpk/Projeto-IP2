@@ -9,7 +9,7 @@
    <children>
       <Text layoutX="67.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discplinas" wrappingWidth="130.93670654296875" />
       <ComboBox fx:id="comboBoxMateria" layoutX="67.0" layoutY="86.0" onAction="#selecianar1" prefHeight="26.0" prefWidth="175.0" />
-      <Text layoutX="340.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pessoa" />
+      <Text layoutX="340.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pessoas" />
       <ComboBox fx:id="comboBoxPessoa" layoutX="340.0" layoutY="86.0" onAction="#selecionar2" prefHeight="26.0" prefWidth="175.0" />
       <ListView fx:id="Lista" layoutX="67.0" layoutY="127.0" prefHeight="252.0" prefWidth="456.0" />
    </children>
