@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisciplinaViewController">
    <children>
-      <Label fx:id="lblName" layoutX="11.0" prefHeight="36.0" prefWidth="255.0" text="titulo">
+      <Label fx:id="lblName" layoutX="11.0" prefHeight="36.0" prefWidth="255.0" text="Titulo">
          <font>
             <Font name="System Bold" size="38.0" />
          </font></Label>
-      <Label fx:id="lblSem" layoutX="14.0" layoutY="55.0" prefHeight="24.0" prefWidth="124.0" text="semestre">
+      <Label fx:id="lblSem" layoutX="14.0" layoutY="55.0" prefHeight="24.0" prefWidth="124.0" text="Semestre">
          <font>
             <Font size="14.0" />
          </font>
