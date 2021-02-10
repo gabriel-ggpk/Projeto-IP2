@@ -66,12 +66,33 @@ public class RepoAlunoMatriculado {
 		
 		return matriculasDoAluno;
 	}
+	public ArrayList<Double> getPeriodosAluno(Aluno aluno){
+		ArrayList<AlunoMatriculado> matriculasDoAluno= getMatriculasAluno(aluno);
+		ArrayList<Double> periodos = new ArrayList<>();
+		for(AlunoMatriculado mat:matriculasDoAluno) {
+			if(!periodos.contains(mat.getSemestre())) {
+				periodos.add(mat.getSemestre());
+			}
+		}
+		return periodos;
+	}
 	
 	public ArrayList<AlunoMatriculado> getMatriculasAluno(Aluno aluno) {
 		ArrayList<AlunoMatriculado> matriculasDoAluno = new ArrayList<>();
 		
 		for (int n = 0; n < matriculas.size(); n++) {
 			if (matriculas.get(n).getAluno().equals(aluno)) {
+				matriculasDoAluno.add(matriculas.get(n));
+			}
+		}
+		
+		return matriculasDoAluno;
+	}
+	public ArrayList<AlunoMatriculado> getMatriculasAluno(Aluno aluno,double periodo) {
+		ArrayList<AlunoMatriculado> matriculasDoAluno = new ArrayList<>();
+		
+		for (int n = 0; n < matriculas.size(); n++) {
+			if (matriculas.get(n).getAluno().equals(aluno)&&matriculas.get(n).getSemestre()==periodo) {
 				matriculasDoAluno.add(matriculas.get(n));
 			}
 		}

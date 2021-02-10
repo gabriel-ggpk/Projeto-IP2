@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import negocios.bean.Pessoa;
@@ -26,18 +27,20 @@ import negocios.bean.Disciplina;
 public class AlunoController implements Initializable {
 	ArrayList<AlunoMatriculado> disciplinas;
 	ObservableList<AlunoMatriculado> disciplinasObs;
+	ObservableList<Double> periodoObs;
+	ArrayList<Double> periodoList;
 	private Pessoa usuario;
 	
 	@FXML
     private	Label nomeAluno;
 	@FXML
-    private ComboBox<AlunoMatriculado> cb;
+    private ListView<AlunoMatriculado> cb;
+	@FXML
+	private ComboBox<Double> periodo;
 	@FXML
     private Button logOut;
 	@FXML
     private Button att;
-	@FXML
-	private TextField periodo;
 	@FXML
 	private TextField matriculatxt;
     
@@ -49,13 +52,14 @@ public class AlunoController implements Initializable {
 		nomeAluno.setText(Gerenciamento.getInstMain().getUsuario().getNome());
 		usuario = Gerenciamento.getInstMain().getUsuario();
 		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAlunoCursando((Aluno)usuario);
-		
-		set();
+		periodoList = Gerenciamento.getInstMain().getAlunoMatriculado().getPeriodosAluno((Aluno)usuario);
+		setCbMatriculas();
+		setCbPeriodos();
 		
 	}
 	public void mudarCenaDisciplina() throws InterruptedException {
-		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAluno((Aluno)usuario);
-		   set(); 
+		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasCursando();
+		   setCbMatriculas(); 
 		try {
 			   
 	           FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/DisciplinaView.fxml"));
@@ -73,9 +77,13 @@ public class AlunoController implements Initializable {
 		
 	}
 	
-	private void set() {
+	private void setCbMatriculas() {
 		disciplinasObs = FXCollections.observableArrayList(disciplinas);
 		cb.setItems(disciplinasObs);
+	}
+	private void setCbPeriodos() {
+		periodoObs = FXCollections.observableArrayList(periodoList);
+		periodo.setItems(periodoObs);	
 	}
 	public void logOut() {
 		Gerenciamento.getInstMain().logOut();
@@ -87,7 +95,7 @@ public class AlunoController implements Initializable {
 	           FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/Historico.fxml"));
 	           Parent root = (Parent) loader.load();
 	           HistoricoController Controller=loader.getController();
-	           Controller.periodoEspecifico(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasSemestre(Double.parseDouble(periodo.getText())));
+	          Controller.periodoEspecifico(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAluno((Aluno)usuario, periodo.getSelectionModel().selectedItemProperty().getValue()));
 	            Stage stage=new Stage();
 	            stage.setScene(new Scene(root));
 	            stage.show();
