@@ -17,7 +17,7 @@ public class Professor extends Pessoa {
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s | %s","Professor", super.toString(), this.getDisciplina());
+		return String.format("%s%n%s  ","Professor", super.toString());
 	}
 	
 	

@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -7,12 +8,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import negocios.Gerenciamento;
+import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
+import negocios.bean.Professor;
 
 
 
@@ -25,28 +32,52 @@ public class CoordenacaoController implements Initializable{
 	ObservableList<Disciplina> materiaOL;
 	
 	@FXML
-    private ComboBox<String> comboBoxPessoa;
+    private ComboBox<Double> comboBoxPeriodo;
 	
-	ArrayList<String> pessoa = new ArrayList<>();
-	ObservableList<String> pessoaOL;
+	ArrayList<Double> semestre = new ArrayList<>();
+	ObservableList<Double> semestreOL;
 	
 	@FXML
-    private ListView<Pessoa> Lista;
+    private ListView<Professor> ListaProfessor;
 	
-	ArrayList<Pessoa> listagem = new ArrayList<>();
-	ObservableList<Pessoa> listagemOL;
+	ArrayList<Professor> listagemProfessor = new ArrayList<>();
+	ObservableList<Professor> listagemProfessorOL;
+	
+	@FXML
+    private ListView<AlunoMatriculado> ListaAluno;
+	
+	ArrayList<AlunoMatriculado> listagemAluno = new ArrayList<>();
+	ObservableList<AlunoMatriculado> listagemAlunoOL;
+	
+	@FXML
+    void clicarAluno() {
+		listar();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfessorEdit.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			ProfessorEditController control = loader.getController();
+			control.alunoEspecifico(ListaAluno.getSelectionModel().getSelectedItem());
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch(IOException e) {
+				e.printStackTrace();
+		}
+    }
 	
 	public void listar() {
-		if(comboBoxMateria.getSelectionModel().getSelectedItem() != null && comboBoxPessoa.getSelectionModel().getSelectedItem() != null) {
-			listagem.clear();
-			if(comboBoxPessoa.getSelectionModel().getSelectedItem() == "Professor") {
-				listagem.add(Gerenciamento.getInstMain().getPessoas().getProfessor(comboBoxMateria.getSelectionModel().getSelectedItem()));
-			}
-			else {
-				listagem.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getAlunosDisciplina(comboBoxMateria.getSelectionModel().getSelectedItem()));
-			}
-			listagemOL = FXCollections.observableArrayList(listagem);
-			Lista.setItems(listagemOL);
+		if(comboBoxMateria.getSelectionModel().getSelectedItem() != null && comboBoxPeriodo.getSelectionModel().getSelectedItem() != null) {
+			listagemAluno.clear();
+			listagemAluno.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculas(comboBoxMateria.getSelectionModel().getSelectedItem(), comboBoxPeriodo.getSelectionModel().getSelectedItem()));
+			listagemAlunoOL = FXCollections.observableArrayList(listagemAluno);
+			ListaAluno.setItems(listagemAlunoOL);
+			
+			listagemProfessor.clear();
+			listagemProfessor.add(Gerenciamento.getInstMain().getPessoas().getProfessor(comboBoxMateria.getSelectionModel().getSelectedItem()));
+			listagemProfessorOL = FXCollections.observableArrayList(listagemProfessor);
+			ListaProfessor.setItems(listagemProfessorOL);
 		}
 	}
 	
@@ -66,26 +97,13 @@ public class CoordenacaoController implements Initializable{
 	}
 	
 	public void settings() {
-		
-		ArrayList<Disciplina> usuario = Gerenciamento.getInstMain().getDiscplina().getLista();
-		materia = usuario;
-		
+		materia = Gerenciamento.getInstMain().getDiscplina().getLista();;
 		materiaOL = FXCollections.observableArrayList(materia);
 		comboBoxMateria.setItems(materiaOL);
 		
-		pessoa.add("Professor");
-		pessoa.add("Aluno");
-		
-		pessoaOL = FXCollections.observableArrayList(pessoa);
-		comboBoxPessoa.setItems(pessoaOL);
+		semestre = Gerenciamento.getInstMain().getSemestres().getSemestres();
+		semestreOL = FXCollections.observableArrayList(semestre);
+		comboBoxPeriodo.setItems(semestreOL);
 	}	
-	
-	public void mudarCena() throws InterruptedException {
-		settings();
-		if(comboBoxPessoa.getValue() == "Professor") {
-			
-		}
-		
-	}
 	
 }
