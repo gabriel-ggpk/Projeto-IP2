@@ -123,6 +123,9 @@ public class Gerenciamento {
 	public RepoAlunoMatriculado getAlunoMatriculado() {
 		return alunosMatriculados;
 	}
+	public RepoSemestres getSemestres() {
+		return semestres;
+	}
 	
 	public Pessoa getUsuario() {
 		return usuario;
