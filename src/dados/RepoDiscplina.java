@@ -18,4 +18,5 @@ public class RepoDiscplina {
 	public ArrayList<Disciplina> getLista(){
 		return materia;
 	}
+	
 }

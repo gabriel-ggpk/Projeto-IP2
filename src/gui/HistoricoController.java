@@ -62,7 +62,6 @@ public class HistoricoController implements Initializable {
 }
 	public void periodoEspecifico(ArrayList<AlunoMatriculado> aluno) {
 		periodo.setText(String.valueOf(aluno.get(0).getSemestre()));
-		
 		disciplinasObs = FXCollections.observableArrayList(aluno);
 		cb.setItems(disciplinasObs);
 	}

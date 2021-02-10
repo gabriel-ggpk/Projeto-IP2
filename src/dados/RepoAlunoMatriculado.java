@@ -12,13 +12,19 @@ public class RepoAlunoMatriculado {
 	}
 	
 	public boolean adicionarMatricula(AlunoMatriculado matricula) {
+		matricula.getDisciplina().preencherVaga();
 		return	matriculas.add(matricula);
 	}
 	
 	public ArrayList<AlunoMatriculado> getMatriculas() {
 		return matriculas;
+		
 	}
-	
+	public void reprovarMatricula(AlunoMatriculado aluno) {
+		aluno.getDisciplina().liberarVaga();
+		aluno.setCursando(-1);
+		
+	}
 	public ArrayList<AlunoMatriculado> getMatriculas(Disciplina disciplina, double semestre) {
 		ArrayList<AlunoMatriculado> matriculasDoSemestre = new ArrayList<>();
 		
@@ -54,7 +60,14 @@ public class RepoAlunoMatriculado {
 		
 		return matriculasDoSemestre;
 	}
-	
+	public AlunoMatriculado getMatriculaUnica(Aluno aluno,Disciplina disciplina) {
+		ArrayList<AlunoMatriculado> list = getMatriculasAlunoCursando(aluno);
+		for(AlunoMatriculado l:list) {
+			if(l.getDisciplina().equals(disciplina)) return l; 
+		}
+		return null;
+		
+	}
 	public ArrayList<AlunoMatriculado> getMatriculasAlunoCursando(Aluno aluno) {
         ArrayList<AlunoMatriculado> matriculasDoAluno = new ArrayList<>();
 		
