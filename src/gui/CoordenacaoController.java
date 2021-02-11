@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -48,6 +49,14 @@ public class CoordenacaoController implements Initializable{
 	
 	ArrayList<AlunoMatriculado> listagemAluno = new ArrayList<>();
 	ObservableList<AlunoMatriculado> listagemAlunoOL;
+        
+        @FXML
+	private void sair(ActionEvent event) {
+		Gerenciamento.getInstMain().logOut();
+		ScreenManager.getInstance().showLoginScreen();
+	}
+        
+        
 	
 	@FXML
     void clicarAluno() {
@@ -95,6 +104,8 @@ public class CoordenacaoController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		settings();
 	}
+        
+        
 	
 	public void settings() {
 		materia = Gerenciamento.getInstMain().getDiscplina().getLista();;
