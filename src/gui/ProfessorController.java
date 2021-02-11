@@ -13,11 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import negocios.Gerenciamento;
 import negocios.bean.Aluno;
@@ -30,6 +28,7 @@ public class ProfessorController implements Initializable {
 	AlunoMatriculado aluno = null;
 	ObservableList<AlunoMatriculado> alunosMatriculadosOL = FXCollections.observableArrayList();
 	ObservableList<Aluno> listaAlunosOL = FXCollections.observableArrayList();
+	ObservableList<Double> semestreOL = FXCollections.observableArrayList();
 	
 	@FXML
 	private Label nomeProfessor;
@@ -38,13 +37,13 @@ public class ProfessorController implements Initializable {
 	private Label materia;
 	
 	@FXML
-	private Label alunoSelecionado;
-	
-	@FXML
 	private ListView<AlunoMatriculado> caixa;
 	
 	@FXML
 	private ChoiceBox<Aluno> listaAlunos;
+	
+	@FXML
+	private ComboBox<Double> periodo;
 	
 	@FXML
 	private void sair(ActionEvent event) {
@@ -60,12 +59,10 @@ public class ProfessorController implements Initializable {
 		}
 		else {
 			aluno = caixa.getSelectionModel().getSelectedItem();
-		    alunoSelecionado.setText(aluno.toString());
 		}
 		
 	}
 	public void zerar() {
-		alunoSelecionado.setText("");
 		caixa.getSelectionModel().select(null);
 		aluno = null;
 	}
@@ -77,6 +74,15 @@ public class ProfessorController implements Initializable {
 		alunosMatriculadosOL.clear();
 		listaAlunosOL.clear();
 		pegarAlunosMatriculados();
+	}
+	
+	@FXML
+	private void escolherSemestre(ActionEvent event) {
+		listaAlunosOL.clear();
+		alunosMatriculadosOL.clear();
+		pegarAlunosMatriculados();
+		listaAlunos.setItems(listaAlunosOL);
+		caixa.setItems(alunosMatriculadosOL);
 	}
 	
 	public void cenaAluno(AlunoMatriculado aluno) {
@@ -96,14 +102,18 @@ public class ProfessorController implements Initializable {
 	}
 	
 	public void settings() {
-		alunoSelecionado.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		profAtual = (Professor) Gerenciamento.getInstMain().getUsuario();
-		pegarAlunosMatriculados();
 		
-		nomeProfessor.setText(Gerenciamento.getInstMain().getUsuario().getNome() + " Disciplina: " + profAtual.getDisciplina().getNome());
-		materia.setText("Vagas: " + alunosMatriculadosOL.size() + "/" + profAtual.getDisciplina().getVagas());
-		caixa.setItems(alunosMatriculadosOL);
+		semestreOL.addAll(Gerenciamento.getInstMain().getSemestres().getSemestres());
+		periodo.setItems(semestreOL);
+		periodo.getSelectionModel().selectLast();
+		
+		pegarAlunosMatriculados();
 		listaAlunos.setItems(listaAlunosOL);
+		caixa.setItems(alunosMatriculadosOL);
+		
+		nomeProfessor.setText("Professor: " + Gerenciamento.getInstMain().getUsuario().getNome());
+		materia.setText("Disciplina: " + profAtual.getDisciplina().getNome());
 	}
 	
 	@Override
@@ -116,7 +126,7 @@ public class ProfessorController implements Initializable {
     	alunoDisipl.removeAll(Gerenciamento.getInstMain().getAlunoMatriculado().getAlunosDisciplina(profAtual.getDisciplina()));
     	listaAlunosOL.addAll(alunoDisipl);
     	
-		alunosMatriculadosOL.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasDisciplina(profAtual.getDisciplina()));
+		alunosMatriculadosOL.addAll(Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculas(profAtual.getDisciplina(), periodo.getSelectionModel().getSelectedItem()));
     	
 	}
 }
