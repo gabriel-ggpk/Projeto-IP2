@@ -6,11 +6,14 @@ import negocios.bean.AlunoMatriculado;
 import negocios.bean.Disciplina;
 
 public class RepoAlunoMatriculado {
-	private ArrayList<AlunoMatriculado> matriculas = new ArrayList<>();
+	private ArrayList<AlunoMatriculado> matriculas;
 	
 	public RepoAlunoMatriculado() {
+		matriculas = new ArrayList<>();
 	}
-	
+	public RepoAlunoMatriculado(ArrayList<AlunoMatriculado> json) {
+		matriculas =json;
+	}
 	public boolean adicionarMatricula(AlunoMatriculado matricula) {
 		matricula.getDisciplina().preencherVaga();
 		return	matriculas.add(matricula);

@@ -50,7 +50,20 @@ public class Disciplina {
 	public void liberarVaga() {
 		this.vagasPreenchidas--;
 	}
-
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(!(obj instanceof Disciplina)) {
+			return false;
+		}
+		Disciplina other = (Disciplina)obj;
+		if(this.nome.equals(other.nome)&&this.aulasTotais==other.aulasTotais&&this.vagas==other.vagas) {
+			return true;
+		}
+		return false;
+	}
 	/*@Override
 	public String toString() {
 		return String.format("Disciplina: (Nome: %s | Aulas Totais: %d | Vagas: %d)", this.getNome(), this.getAulasTotais(), this.getVagas());

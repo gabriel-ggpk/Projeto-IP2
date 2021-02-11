@@ -1,6 +1,8 @@
 package negocios;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import dados.RepoAlunoMatriculado;
 import dados.RepoDiscplina;
@@ -17,7 +19,7 @@ import negocios.bean.Professor;
 
 public class Gerenciamento {
 	private RepoPessoas pessoas;
-	private RepoDiscplina discplinas;
+	private RepoDiscplina disciplinas;
 	private RepoAlunoMatriculado alunosMatriculados;
 	private RepoSemestres semestres;
 	private Pessoa usuario;
@@ -30,11 +32,22 @@ public class Gerenciamento {
 	}
 	
 	private Gerenciamento() {
-		discplinas = new RepoDiscplina();
-		pessoas = new RepoPessoas();
-		alunosMatriculados = new RepoAlunoMatriculado();
-		semestres = new RepoSemestres();
-		testes();
+		TesteJson json = new TesteJson();
+		try {
+			semestres = new RepoSemestres(json.readJSONSemestre());
+			disciplinas = new RepoDiscplina(json.readJSONDisciplinas());
+			pessoas = new RepoPessoas(json.readJSONPessoas());
+			alunosMatriculados = new RepoAlunoMatriculado(json.readJSONMatriculas());
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//testes();
+		
 	}
 	
 	private void testes() {
@@ -47,13 +60,13 @@ public class Gerenciamento {
 		pessoas.adicionar(Aluno2);
 		
 		Disciplina Disciplina1 = new Disciplina("mat", 50, 50);
-		discplinas.adicionar(Disciplina1);
+		disciplinas.adicionar(Disciplina1);
 		Disciplina Disciplina2 = new Disciplina("fis", 50, 50);
-		discplinas.adicionar(Disciplina2);
+		disciplinas.adicionar(Disciplina2);
 		Disciplina Disciplina3 = new Disciplina("art", 50, 50);
-		discplinas.adicionar(Disciplina3);
+		disciplinas.adicionar(Disciplina3);
 		Disciplina Disciplina4 = new Disciplina("bio", 50, 50);
-		discplinas.adicionar(Disciplina4);
+		disciplinas.adicionar(Disciplina4);
 		
 		matricularAluno(((Aluno)Aluno1), Disciplina1, 2020.1);
 		matricularAluno(((Aluno)Aluno1), Disciplina2, 2020.1);
@@ -119,7 +132,7 @@ public class Gerenciamento {
 		return pessoas;
 	}
 	public RepoDiscplina getDiscplina() {
-		return discplinas;
+		return disciplinas;
 	}
 	public RepoAlunoMatriculado getAlunoMatriculado() {
 		return alunosMatriculados;

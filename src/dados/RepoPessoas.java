@@ -2,14 +2,19 @@ package dados;
 
 import java.util.ArrayList;
 import negocios.bean.Aluno;
+import negocios.bean.Coordenacao;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 import negocios.bean.Professor;
 
 public class RepoPessoas implements RepositorioPessoas {
-	private ArrayList<Pessoa> pessoas = new ArrayList<>();
+	private ArrayList<Pessoa> pessoas;
 	
 	public RepoPessoas() {
+		pessoas = new ArrayList<>();
+	}
+	public RepoPessoas(ArrayList<Pessoa> pessoa) {
+		pessoas = pessoa;
 	}
 	
 	public void adicionar(Pessoa pessoa) {

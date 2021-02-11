@@ -7,6 +7,9 @@ public class RepoSemestres {
 	
 	public RepoSemestres() {
 	}
+	public RepoSemestres(ArrayList<Double> semestres) {
+		this.semestres.addAll(semestres);
+	}
 	
 	public void adicionarSemestre(double semestre) {
 		semestres.add(semestre);
