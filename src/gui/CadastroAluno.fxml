@@ -14,7 +14,7 @@
       <TextField fx:id="login" layoutX="286.0" layoutY="213.0" onMouseClicked="#getSource" />
       <Label layoutX="286.0" layoutY="246.0" text="Senha:" />
       <PasswordField fx:id="senha" layoutX="286.0" layoutY="263.0" onMouseClicked="#getSource" />
-      <Label layoutX="340.0" layoutY="126.0" text="Cadastro" />
+      <Label layoutX="320.0" layoutY="117.0" text="Cadastro Aluno" />
       <Button layoutX="285.0" layoutY="308.0" mnemonicParsing="false" onAction="#validar" scaleZ="10.0" text="Cadastrar" />
       <Button layoutX="387.0" layoutY="308.0" mnemonicParsing="false" onAction="#showLogin" text="Voltar" />
    </children>

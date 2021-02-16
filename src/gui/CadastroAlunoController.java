@@ -35,7 +35,7 @@ public class CadastroAlunoController extends Cadastro implements Initializable {
         for (Map.Entry<TextField, String> campo: camposAluno.entrySet()) {
             if (campo.getKey().getText().isEmpty()) {
                 colocarBorda(campo.getKey());
-                criarAlerta(String.format("%s precisa ser preenchido", campo.getValue()));
+                criarAlerta(String.format("%s do aluno precisa ser preenchido", campo.getValue()));
                 return;
             }
         }
