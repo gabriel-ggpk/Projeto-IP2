@@ -67,6 +67,24 @@ public class CoordenacaoController implements Initializable{
 		}
     }
 	
+	@FXML
+    void clicarProfessor() {
+		listar();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CoordenacaoView.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			CoordenacaoViewController control = loader.getController();
+			control.professorEspesifico(ListaProfessor.getSelectionModel().getSelectedItem());
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch(IOException e) {
+				e.printStackTrace();
+		}
+    }
+	
 	public void listar() {
 		if(comboBoxMateria.getSelectionModel().getSelectedItem() != null && comboBoxPeriodo.getSelectionModel().getSelectedItem() != null) {
 			listagemAluno.clear();

@@ -12,6 +12,6 @@
       <Text layoutX="407.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Período" />
       <ComboBox fx:id="comboBoxPeriodo" layoutX="407.0" layoutY="99.0" onAction="#selecionar2" prefHeight="26.0" prefWidth="175.0" />
       <ListView fx:id="ListaAluno" layoutX="67.0" layoutY="191.0" onMouseClicked="#clicarAluno" prefHeight="183.0" prefWidth="516.0" />
-      <ListView fx:id="ListaProfessor" layoutX="67.0" layoutY="136.0" prefHeight="47.0" prefWidth="516.0" />
+      <ListView fx:id="ListaProfessor" layoutX="67.0" layoutY="136.0" onMouseClicked="#clicarProfessor" prefHeight="47.0" prefWidth="516.0" />
    </children>
 </AnchorPane>
