@@ -5,6 +5,15 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import negocios.Gerenciamento;
 
+class Tread extends Thread {
+
+    public void run() {
+       Gerenciamento.getInstMain().salvar();
+       System.out.println("Bye.");
+       
+    }
+ }
+
 public class Main extends Application {
 	/*
 	LOGIN E SENHA DOS TESTES:
@@ -20,6 +29,8 @@ public class Main extends Application {
 	    ScreenManager.getInstance().showLoginScreen();
 	      
 	    primaryStage.show();
+	
+	    Runtime.getRuntime().addShutdownHook(new Tread());
     }
 
 	public static Gerenciamento getGer() { 
@@ -34,5 +45,6 @@ public class Main extends Application {
 	public static Stage getStg() {
 		return stg;
 	}
-
+	
+	
 }

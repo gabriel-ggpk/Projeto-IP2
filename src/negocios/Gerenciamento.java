@@ -52,6 +52,19 @@ public class Gerenciamento {
 		
 	}
 	
+	public void salvar() {
+	TesteJson json = new TesteJson();
+	try {
+		json.writeJSONDisciplinas(disciplinas.getLista());
+		json.writeJSONMatriculas(alunosMatriculados.getMatriculas());
+		json.writeJSONPessoas(pessoas.getPessoas());
+		json.writeJSONSemestre(semestres.getSemestres());
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
 	private void testes() {
 		semestres = new RepoSemestres();
 		pessoas = new RepoPessoas();
