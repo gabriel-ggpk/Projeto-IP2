@@ -13,13 +13,17 @@ import negocios.bean.Aluno;
 import negocios.bean.Disciplina;
 import negocios.bean.Pessoa;
 import negocios.bean.Professor;
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class CadastroController implements Initializable {
-	
+
+    private Map<TextField, String> campos = new LinkedHashMap<>();
+    private Map<TextField, String> camposDisciplina = new LinkedHashMap<>();
+
     @FXML
     TextField login, nome, nomedis, vagasdis, aulasdis;
 
@@ -33,23 +37,26 @@ public class CadastroController implements Initializable {
     private AnchorPane disciplina;
 
     @FXML
-    private Button botaoCadastro, botaoVoltar;
+    private Button botaoValidar, botaoVoltar;
 
-    @FXML
-    private void mostrarDisciplina(ActionEvent event) {
-        RadioButton radio = (RadioButton) tipoConta.getSelectedToggle();
+    private void alterarDisciplina(RadioButton radio) {
         if (radio.getText().equals("Professor")) {
             disciplina.setOpacity(1);
-            botaoCadastro.setLayoutY(404);botaoVoltar.setLayoutY(404);
+            botaoValidar.setLayoutY(404);botaoVoltar.setLayoutY(404);
         } else {
             disciplina.setOpacity(0);
-            botaoCadastro.setLayoutY(284);botaoVoltar.setLayoutY(284);
+            botaoValidar.setLayoutY(284);botaoVoltar.setLayoutY(284);
         }
     }
 
     @FXML
-    private void tiraBorda(MouseEvent event) {
-        login.setStyle("-fx-border-color: null");
+    private void getSource(MouseEvent event) {
+        if (event.getSource() instanceof TextField) tiraBorda((TextField) event.getSource());
+        if (event.getSource() instanceof RadioButton) alterarDisciplina((RadioButton) event.getSource());
+    }
+
+    private void tiraBorda(TextField campo) {
+        campo.setStyle("-fx-border-color: null;");
     }
 
     @FXML
@@ -70,39 +77,28 @@ public class CadastroController implements Initializable {
 
 
     @FXML
-    private void cadastrar(ActionEvent event) throws IOException {
+    private void validar(ActionEvent event) throws IOException {
         RadioButton radio = (RadioButton) tipoConta.getSelectedToggle();
-        Pessoa add;
 
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setHeaderText(null);
-        alerta.setContentText("Você deve preencher todos os campos");
-        alerta.setTitle("Alerta");
-
-        if (nome.getText().isEmpty() || login.getText().isEmpty() || senha.getText().isEmpty()) {
-            alerta.showAndWait();
-        } else if (radio.getText().equals("Professor") &&
-                (nomedis.getText().isEmpty() || vagasdis.getText().isEmpty() || aulasdis.getText().isEmpty())) {
-            alerta.showAndWait();
-        } else {
-            if (radio.getText().equals("Aluno")) {
-                add = new Aluno(nome.getText(), senha.getText(), login.getText());
-            } else {
-                add = new Professor(nome.getText(), senha.getText(), login.getText(),
-                        new Disciplina(nomedis.getText(),
-                                Integer.parseInt(aulasdis.getText()),
-                                Integer.parseInt(vagasdis.getText())));
-            }
-
-            try {
-                Gerenciamento.getInstMain().cadastrarPessoa(add);
-                showLogin();
-            } catch(LoginJaExisteException err) {
-                login.setStyle("-fx-border-color: #f00;");
-                alerta.setContentText("Login já existente");
-                alerta.showAndWait();
+        for (Map.Entry<TextField, String> campo: campos.entrySet()) {
+            if (campo.getKey().getText().isEmpty()) {
+                colocarBorda(campo.getKey());
+                criarAlerta(String.format("%s precisa ser preenchido", campo.getValue()));
+                return;
             }
         }
+
+        if (radio.getText().equals("Professor")) {
+            for (Map.Entry<TextField, String> campoDisciplina: camposDisciplina.entrySet()) {
+                if (campoDisciplina.getKey().getText().isEmpty()) {
+                    colocarBorda(campoDisciplina.getKey());
+                    criarAlerta(String.format("%s da disciplina precisa ser preenchida", campoDisciplina.getValue()));
+                    return;
+                }
+            }
+        }
+
+        criarPessoa(radio);
     }
 
     @FXML
@@ -111,16 +107,65 @@ public class CadastroController implements Initializable {
         limparDados();
     }
 
-    private void limparDados() {
-        nome.setText("");login.setText("");login.setStyle("-fx-border-color: null");senha.setText("");nomedis.setText("");vagasdis.setText("");
-        aulasdis.setText("");tipoConta.selectToggle(tipoConta.getSelectedToggle().getToggleGroup().getToggles().get(0));
-        disciplina.setOpacity(0);
-        botaoCadastro.setLayoutY(284);botaoVoltar.setLayoutY(284);
+    private void criarPessoa(RadioButton tipo) {
+        Pessoa novaPessoa;
+        if (tipo.getText().equals("Aluno")) {
+            novaPessoa = new Aluno(nome.getText(), senha.getText(), login.getText());
+        } else {
+            novaPessoa = new Professor(nome.getText(), senha.getText(), login.getText(),
+                            new Disciplina(
+                                nomedis.getText(),
+                                Integer.parseInt(aulasdis.getText()),
+                                Integer.parseInt(vagasdis.getText())
+                            ));
+        }
+
+        cadastrar(novaPessoa);
     }
 
+    private void cadastrar(Pessoa pessoa) {
+        try {
+            Gerenciamento.getInstMain().cadastrarPessoa(pessoa);
+            showLogin();
+        } catch(LoginJaExisteException err) {
+            colocarBorda(login);
+            criarAlerta("Login já existente");
+        }
+    }
+
+    private void criarAlerta(String mensagem) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("Alerta");
+        alerta.setContentText(mensagem);
+        alerta.showAndWait();
+    }
+
+    private void colocarBorda(TextField campo) {
+        campo.setStyle("-fx-border-color: #f00;");
+    }
+
+    private void limparDados() {
+        for (TextField campo : campos.keySet()) {
+            campo.setText("");
+            tiraBorda(campo);
+        }
+        for (TextField campoDisciplina : camposDisciplina.keySet()) {
+            campoDisciplina.setText("");
+            tiraBorda(campoDisciplina);
+        }
+
+        tipoConta.selectToggle(tipoConta.getToggles().get(0));
+        alterarDisciplina((RadioButton) tipoConta.getSelectedToggle());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	
+    	campos.put(nome, "Nome");
+    	campos.put(login, "Login");
+    	campos.put(senha, "Senha");
+    	camposDisciplina.put(nomedis, "Nome");
+    	camposDisciplina.put(vagasdis, "Vagas");
+    	camposDisciplina.put(aulasdis, "Total de Aulas");
     }
 }

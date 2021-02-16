@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="378.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MatriculaAlunoController">
+   <children>
+      <Label fx:id="periodo" layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="288.0" text="Periodo">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="disciplina" layoutX="320.0" layoutY="90.0" prefHeight="37.0" prefWidth="226.0" text="-" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="321.0" layoutY="165.0" text="AULAS TOTAIS" />
+      <Label fx:id="aulasTotais" layoutX="409.0" layoutY="165.0" prefHeight="17.0" prefWidth="126.0" text="-" />
+      <ListView fx:id="lv" layoutX="14.0" layoutY="90.0" onMouseClicked="#set" prefHeight="200.0" prefWidth="288.0" />
+      <Label layoutX="320.0" layoutY="140.0" text="VAGAS" />
+      <Label fx:id="vagas" layoutX="370.0" layoutY="140.0" prefHeight="17.0" prefWidth="58.0" text="-" />
+      <Button layoutX="115.0" layoutY="323.0" mnemonicParsing="false" onAction="#matricular" text="Matricular-se" />
+   </children>
+</Pane>

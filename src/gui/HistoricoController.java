@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
 
 public class HistoricoController implements Initializable {
@@ -59,10 +60,9 @@ public class HistoricoController implements Initializable {
 		}
     
 }
-	public void periodoEspecifico(ArrayList<AlunoMatriculado> matriculas) {
-		periodo.setText(String.valueOf(matriculas.get(0).getSemestre()));
-		disciplinas = matriculas;
-		disciplinasObs = FXCollections.observableArrayList(disciplinas);
+	public void periodoEspecifico(ArrayList<AlunoMatriculado> aluno) {
+		periodo.setText(String.valueOf(aluno.get(0).getSemestre()));
+		disciplinasObs = FXCollections.observableArrayList(aluno);
 		cb.setItems(disciplinasObs);
 	}
 }

@@ -1,6 +1,8 @@
 package negocios;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import dados.RepoAlunoMatriculado;
 import dados.RepoDiscplina;
@@ -17,7 +19,7 @@ import negocios.bean.Professor;
 
 public class Gerenciamento {
 	private RepoPessoas pessoas;
-	private RepoDiscplina discplina;
+	private RepoDiscplina disciplinas;
 	private RepoAlunoMatriculado alunosMatriculados;
 	private RepoSemestres semestres;
 	private Pessoa usuario;
@@ -30,30 +32,41 @@ public class Gerenciamento {
 	}
 	
 	private Gerenciamento() {
-		discplina = new RepoDiscplina();
-		pessoas = new RepoPessoas();
-		alunosMatriculados = new RepoAlunoMatriculado();
-		semestres = new RepoSemestres();
-		testes();
+		TesteJson json = new TesteJson();
+		try {
+			semestres = new RepoSemestres(json.readJSONSemestre());
+			disciplinas = new RepoDiscplina(json.readJSONDisciplinas());
+			pessoas = new RepoPessoas(json.readJSONPessoas());
+			alunosMatriculados = new RepoAlunoMatriculado(json.readJSONMatriculas());
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//testes();
+		
 	}
 	
 	private void testes() {
 		semestres.adicionarSemestre(2020.1);
 		semestres.adicionarSemestre(2020.2);
 		
-		Pessoa Aluno1 = new Aluno("gabriel","123","123");
+		Pessoa Aluno1 = new Aluno("Gabriel Henrique Cavacanti","123","123");
 		pessoas.adicionar(Aluno1);
 		Pessoa Aluno2 = new Aluno("roberto","1234","1234");
 		pessoas.adicionar(Aluno2);
 		
 		Disciplina Disciplina1 = new Disciplina("mat", 50, 50);
-		discplina.adicionar(Disciplina1);
+		disciplinas.adicionar(Disciplina1);
 		Disciplina Disciplina2 = new Disciplina("fis", 50, 50);
-		discplina.adicionar(Disciplina2);
+		disciplinas.adicionar(Disciplina2);
 		Disciplina Disciplina3 = new Disciplina("art", 50, 50);
-		discplina.adicionar(Disciplina3);
+		disciplinas.adicionar(Disciplina3);
 		Disciplina Disciplina4 = new Disciplina("bio", 50, 50);
-		discplina.adicionar(Disciplina4);
+		disciplinas.adicionar(Disciplina4);
 		
 		matricularAluno(((Aluno)Aluno1), Disciplina1, 2020.1);
 		matricularAluno(((Aluno)Aluno1), Disciplina2, 2020.1);
@@ -62,7 +75,7 @@ public class Gerenciamento {
 		
 		ArrayList<AlunoMatriculado> testando= alunosMatriculados.getMatriculasSemestre(2020.1);
 		for(AlunoMatriculado t:testando) {
-			t.setCursando(-1);
+			alunosMatriculados.reprovarMatricula(t);
 		}
 		matricularAluno(((Aluno)Aluno1), Disciplina1, 2020.2);
 		matricularAluno(((Aluno)Aluno1), Disciplina2, 2020.2);
@@ -110,15 +123,16 @@ public class Gerenciamento {
 		}
 	}
 	public void matricularAluno(Aluno aluno, Disciplina disciplina, double semestre) {
+		if(disciplina.getVagas()>disciplina.getVagasPreenchidas()) {
 		AlunoMatriculado matricula = new AlunoMatriculado(aluno, disciplina, semestre);
 		alunosMatriculados.adicionarMatricula(matricula);	
+		}
 	}
-	
 	public RepoPessoas getPessoas() {
 		return pessoas;
 	}
 	public RepoDiscplina getDiscplina() {
-		return discplina;
+		return disciplinas;
 	}
 	public RepoAlunoMatriculado getAlunoMatriculado() {
 		return alunosMatriculados;

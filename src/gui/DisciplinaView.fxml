@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisciplinaViewController">
+<AnchorPane prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisciplinaViewController">
    <children>
       <Label fx:id="lblName" layoutX="11.0" prefHeight="36.0" prefWidth="255.0" text="Titulo">
          <font>
@@ -21,22 +21,22 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="361.0" layoutY="25.0" prefHeight="24.0" prefWidth="49.0" text="Vagas:">
+      <Label layoutX="266.0" layoutY="67.0" prefHeight="24.0" prefWidth="49.0" text="Vagas:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblVagas" layoutX="410.0" layoutY="28.0" prefHeight="19.0" prefWidth="49.0" text="vagas">
+      <Label fx:id="lblVagas" layoutX="315.0" layoutY="70.0" prefHeight="19.0" prefWidth="49.0" text="vagas">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="361.0" layoutY="58.0" text="Aulas Totais: ">
+      <Label layoutX="266.0" layoutY="100.0" text="Aulas Totais: ">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblAulas" layoutX="449.0" layoutY="58.0" prefHeight="17.0" prefWidth="76.0" text="aulas">
+      <Label fx:id="lblAulas" layoutX="354.0" layoutY="100.0" prefHeight="17.0" prefWidth="76.0" text="aulas">
          <font>
             <Font size="13.0" />
          </font>
@@ -46,19 +46,19 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="183.0" text="Notas: ">
+      <Label layoutX="11.0" layoutY="127.0" text="Notas: ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="219.0" text="AV 1-" />
-      <Label layoutX="14.0" layoutY="242.0" text="AV 2-" />
-      <Label layoutX="14.0" layoutY="267.0" text="AV 3-" />
-      <Label layoutX="14.0" layoutY="292.0" text="AV 4-" />
-      <Label fx:id="lblNota1" layoutX="48.0" layoutY="219.0" text="Label" />
-      <Label fx:id="lblNota2" layoutX="48.0" layoutY="242.0" text="Label" />
-      <Label fx:id="lblNota3" layoutX="48.0" layoutY="267.0" text="Label" />
-      <Label fx:id="lblNota4" layoutX="47.0" layoutY="292.0" text="Label" />
-      <Button fx:id="btnDesistir" layoutX="373.0" layoutY="288.0" mnemonicParsing="false" onAction="#desistir" text="Desistir da Disciplina" />
+      <Label layoutX="11.0" layoutY="163.0" text="AV 1-" />
+      <Label layoutX="11.0" layoutY="186.0" text="AV 2-" />
+      <Label layoutX="11.0" layoutY="211.0" text="AV 3-" />
+      <Label layoutX="11.0" layoutY="236.0" text="AV 4-" />
+      <Label fx:id="lblNota1" layoutX="45.0" layoutY="163.0" text="Label" />
+      <Label fx:id="lblNota2" layoutX="45.0" layoutY="186.0" text="Label" />
+      <Label fx:id="lblNota3" layoutX="45.0" layoutY="211.0" text="Label" />
+      <Label fx:id="lblNota4" layoutX="44.0" layoutY="236.0" text="Label" />
+      <Button fx:id="btnDesistir" layoutX="266.0" layoutY="224.0" mnemonicParsing="false" onAction="#desistir" text="Desistir da Disciplina" />
    </children>
 </AnchorPane>

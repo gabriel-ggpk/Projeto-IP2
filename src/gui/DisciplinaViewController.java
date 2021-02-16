@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
 
 public class DisciplinaViewController implements Initializable {
@@ -57,7 +58,7 @@ public class DisciplinaViewController implements Initializable {
 		
 	}
 	public void desistir() throws ClassNotFoundException, IOException {
-		aluno.setCursando(-1);
+		Gerenciamento.getInstMain().getAlunoMatriculado().reprovarMatricula(aluno);
 	}
 	
 	

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CoordenacaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CoordenacaoController">
    <children>
-      <Text layoutX="67.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discplinas" wrappingWidth="130.93670654296875" />
-      <ComboBox fx:id="comboBoxMateria" layoutX="67.0" layoutY="99.0" onAction="#selecianar1" prefHeight="26.0" prefWidth="175.0" />
-      <Text layoutX="407.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Período" />
-      <ComboBox fx:id="comboBoxPeriodo" layoutX="407.0" layoutY="99.0" onAction="#selecionar2" prefHeight="26.0" prefWidth="175.0" />
-      <ListView fx:id="ListaAluno" layoutX="67.0" layoutY="191.0" onMouseClicked="#clicarAluno" prefHeight="183.0" prefWidth="516.0" />
-      <ListView fx:id="ListaProfessor" layoutX="67.0" layoutY="136.0" onMouseClicked="#clicarProfessor" prefHeight="47.0" prefWidth="516.0" />
+      <Text layoutX="67.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discplinas" wrappingWidth="130.93670654296875" />
+      <ComboBox fx:id="comboBoxMateria" layoutX="67.0" layoutY="52.0" onAction="#selecianar1" prefHeight="26.0" prefWidth="175.0" />
+      <Text layoutX="400.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Período" />
+      <ComboBox fx:id="comboBoxPeriodo" layoutX="400.0" layoutY="52.0" onAction="#selecionar2" prefHeight="26.0" prefWidth="175.0" />
+      <ListView fx:id="ListaAluno" layoutX="67.0" layoutY="161.0" onMouseClicked="#clicarAluno" prefHeight="168.0" prefWidth="516.0" />
+      <ListView fx:id="ListaProfessor" layoutX="67.0" layoutY="99.0" prefHeight="47.0" prefWidth="516.0" />
+      <Button layoutX="275.0" layoutY="343.0" mnemonicParsing="false" onAction="#sair" prefHeight="32.0" prefWidth="76.0" text="LogOut" />
    </children>
 </AnchorPane>
