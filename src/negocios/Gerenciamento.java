@@ -32,12 +32,14 @@ public class Gerenciamento {
 	}
 	
 	private Gerenciamento() {
+		//testes();
 		TesteJson json = new TesteJson();
 		try {
 			semestres = new RepoSemestres(json.readJSONSemestre());
 			disciplinas = new RepoDiscplina(json.readJSONDisciplinas());
 			pessoas = new RepoPessoas(json.readJSONPessoas());
 			alunosMatriculados = new RepoAlunoMatriculado(json.readJSONMatriculas());
+		
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -46,11 +48,15 @@ public class Gerenciamento {
 			e.printStackTrace();
 		}
 		
-		//testes();
+		
 		
 	}
 	
 	private void testes() {
+		semestres = new RepoSemestres();
+		pessoas = new RepoPessoas();
+		disciplinas = new RepoDiscplina();
+		alunosMatriculados = new RepoAlunoMatriculado();
 		semestres.adicionarSemestre(2020.1);
 		semestres.adicionarSemestre(2020.2);
 		
