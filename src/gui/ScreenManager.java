@@ -20,7 +20,7 @@ public class ScreenManager {
         try {
             Parent loginPane = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
             this.loginScene = new Scene(loginPane);
-            Parent singUpPane = FXMLLoader.load(getClass().getResource("/gui/Cadastro.fxml"));
+            Parent singUpPane = FXMLLoader.load(getClass().getResource("/gui/CadastroAluno.fxml"));
             this.cadastroScene = new Scene(singUpPane);
             
         } catch (IOException e) {
