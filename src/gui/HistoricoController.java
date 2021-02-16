@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
 
 public class HistoricoController implements Initializable {
@@ -38,7 +37,8 @@ public class HistoricoController implements Initializable {
 
     @FXML
     private Label faltas;
-
+    @FXML
+    private Label statusLbl;
     @FXML
     private Label aulasTotais;
     private ArrayList<Label> notas;
@@ -55,6 +55,7 @@ public class HistoricoController implements Initializable {
 		disciplina.setText(selected.getDisciplina().getNome());
 		faltas.setText(String.valueOf(selected.getFaltas()));
 		aulasTotais.setText(String.valueOf(selected.getDisciplina().getAulasTotais()));
+		statusLbl.setText(selected.isCursando());
 		for(int x = 0;x<4;x++) {
 			notas.get(x).setText(String.valueOf(selected.getNotas()[x]));
 		}

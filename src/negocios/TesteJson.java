@@ -59,7 +59,7 @@ public class TesteJson {
 		JsonArray array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			AlunoMatriculado a = gson.fromJson(p, AlunoMatriculado.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
 		return result;
@@ -79,7 +79,7 @@ public class TesteJson {
 		JsonArray array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			Disciplina a = gson.fromJson(p, Disciplina.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
 		return result;
@@ -100,7 +100,7 @@ public class TesteJson {
 		JsonArray array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			Double a = gson.fromJson(p, Double.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
 		return result;
@@ -114,7 +114,7 @@ public class TesteJson {
 		JsonArray array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			Aluno a = gson.fromJson(p, Aluno.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
 		bf.close();
@@ -122,7 +122,7 @@ public class TesteJson {
 		array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			Professor a = gson.fromJson(p, Professor.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
 		bf.close();
@@ -130,11 +130,9 @@ public class TesteJson {
 		array = gson.fromJson(bf, JsonArray.class);
 		for (JsonElement p : array) {
 			Coordenacao a = gson.fromJson(p, Coordenacao.class);
-			System.out.println(a);
+			
 			result.add(a);
 		}
-
-		System.out.println(result);
 		return result;
 	}
 
