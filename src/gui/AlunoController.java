@@ -59,8 +59,9 @@ public class AlunoController implements Initializable {
 	}
 
 	public void mudarCenaDisciplina() throws InterruptedException {
-		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasCursando();
+		disciplinas = Gerenciamento.getInstMain().getAlunoMatriculado().getMatriculasAlunoCursando((Aluno)usuario);
 		setLvMatriculas();
+		if(cb.getSelectionModel().selectedItemProperty().getValue() != null) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/DisciplinaView.fxml"));
 			Parent root = (Parent) loader.load();
@@ -72,7 +73,7 @@ public class AlunoController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		}
 	}
 
 	private void setLvMatriculas() {
