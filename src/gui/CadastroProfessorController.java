@@ -1,14 +1,18 @@
 package gui;
 
 import exceptions.LoginJaExisteException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import negocios.Gerenciamento;
 import negocios.bean.Professor;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -22,6 +26,12 @@ public class CadastroProfessorController extends Cadastro implements Initializab
 
     @FXML
     PasswordField senha;
+    
+    @FXML
+    private ListView<Professor> listaProfessores;
+    
+    ArrayList<Professor> listagemProfessor = new ArrayList<>();
+	ObservableList<Professor> listagemProfessorOL;
 
     @FXML
     private void getSource(MouseEvent event) {
@@ -64,5 +74,9 @@ public class CadastroProfessorController extends Cadastro implements Initializab
     	camposProfessor.put(nome, "Nome");
     	camposProfessor.put(login, "Login");
     	camposProfessor.put(senha, "Senha");
+    	
+    	listagemProfessor.addAll(Gerenciamento.getInstMain().getPessoas().getProfessor());
+		listagemProfessorOL = FXCollections.observableArrayList(listagemProfessor);
+		listaProfessores.setItems(listagemProfessorOL);
     }
 }

@@ -50,12 +50,39 @@ public class CoordenacaoController implements Initializable{
 	ArrayList<AlunoMatriculado> listagemAluno = new ArrayList<>();
 	ObservableList<AlunoMatriculado> listagemAlunoOL;
         
-        @FXML
+    @FXML
 	private void sair(ActionEvent event) {
 		Gerenciamento.getInstMain().logOut();
 		ScreenManager.getInstance().showLoginScreen();
 	}
-        
+       
+    @FXML
+    void cadastrarDisciplina(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CadastroDisciplina.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch(IOException e) {
+				e.printStackTrace();
+		}
+    }
+
+    @FXML
+    void cadastrarProfessor(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CadastroProfessor.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch(IOException e) {
+				e.printStackTrace();
+		}
+    }
         
 	
 	@FXML
