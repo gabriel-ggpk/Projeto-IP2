@@ -53,16 +53,8 @@ public class ProfessorController implements Initializable {
 
 	@FXML
 	private void clicarAluno() {
-		if(aluno == caixa.getSelectionModel().getSelectedItem()) {
-			cenaAluno(aluno);
-			this.zerar();
-		}
-		else {
-			aluno = caixa.getSelectionModel().getSelectedItem();
-		}
-		
-	}
-	public void zerar() {
+		aluno = caixa.getSelectionModel().getSelectedItem();
+		cenaAluno(aluno);
 		caixa.getSelectionModel().select(null);
 		aluno = null;
 	}

@@ -5,9 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import negocios.Gerenciamento;
 import negocios.bean.Professor;
 import java.io.IOException;
@@ -20,7 +24,9 @@ import java.util.ResourceBundle;
 public class CadastroProfessorController extends Cadastro implements Initializable {
 
     private Map<TextField, String> camposProfessor = new LinkedHashMap<>();
-
+    ArrayList<Professor> listagemProfessor = new ArrayList<>();
+	ObservableList<Professor> listagemProfessorOL;
+	
     @FXML
     TextField login, nome;
 
@@ -29,9 +35,6 @@ public class CadastroProfessorController extends Cadastro implements Initializab
     
     @FXML
     private ListView<Professor> listaProfessores;
-    
-    ArrayList<Professor> listagemProfessor = new ArrayList<>();
-	ObservableList<Professor> listagemProfessorOL;
 
     @FXML
     private void getSource(MouseEvent event) {
@@ -51,22 +54,42 @@ public class CadastroProfessorController extends Cadastro implements Initializab
         criarProfessor();
     }
     
+    @FXML
+    void clicarProfessor() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CoordenacaoView.fxml"));
+			Parent root = (Parent) loader.load();
+			
+			CoordenacaoViewController control = loader.getController();
+			control.professorEspesifico(listaProfessores.getSelectionModel().getSelectedItem());
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch(IOException e) {
+				e.printStackTrace();
+		}
+    }
+    
     private void criarProfessor() {
         Professor novoProfessor = new Professor(nome.getText(), senha.getText(), login.getText(), null);
 
         try {
             cadastrar(novoProfessor);
-            voltarTela();
+            limparDados(camposProfessor);
+            atualiza();
         } catch(LoginJaExisteException err) {
             criarAlerta("Login já existente!");
             colocarBorda(login);
         }
     }
-
-    @FXML
-    private void voltarTela() {
-        ScreenManager.getInstance().showLoginScreen(); // Mudar pra onde vai a tela
-        limparDados(camposProfessor);
+    
+    public void atualiza() {
+    	listagemProfessor.clear();
+    	listagemProfessorOL.clear();
+    	listagemProfessor.addAll(Gerenciamento.getInstMain().getPessoas().getProfessor());
+		listagemProfessorOL = FXCollections.observableArrayList(listagemProfessor);
+		listaProfessores.setItems(listagemProfessorOL);
     }
 
     @Override

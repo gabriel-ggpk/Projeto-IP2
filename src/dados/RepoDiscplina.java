@@ -18,6 +18,15 @@ public class RepoDiscplina {
 	public void remover(Disciplina disciplina) {
 		materia.remove(disciplina);
 	}
+	public boolean disciplinaExiste(Disciplina disc) {
+		for(int n = 0; n < materia.size(); n++) {
+			if(materia.contains(disc)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 	public ArrayList<Disciplina> getLista(){
 		return materia;
 	}

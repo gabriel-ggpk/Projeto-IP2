@@ -16,8 +16,7 @@
       <Label layoutX="284.0" layoutY="228.0" text="Senha:" />
       <PasswordField fx:id="senha" layoutX="286.0" layoutY="246.0" onMouseClicked="#getSource" />
       <Label layoutX="310.0" layoutY="96.0" text="Cadastro Professor" />
-      <Button layoutX="285.0" layoutY="283.0" mnemonicParsing="false" onAction="#validar" scaleZ="10.0" text="Cadastrar" />
-      <Button layoutX="386.0" layoutY="283.0" mnemonicParsing="false" onAction="#voltarTela" text="Voltar" />
-      <ListView fx:id="listaProfessores" layoutX="37.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="327.0" layoutY="284.0" mnemonicParsing="false" onAction="#validar" scaleZ="10.0" text="Cadastrar" />
+      <ListView fx:id="listaProfessores" layoutX="37.0" layoutY="96.0" onMouseClicked="#clicarProfessor" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -147,7 +147,8 @@ public class Gerenciamento {
 		alunosMatriculados.adicionarMatricula(matricula);	
 		}
 	}
-	public RepoPessoas getPessoas() {
+	
+ 	public RepoPessoas getPessoas() {
 		return pessoas;
 	}
 	public RepoDiscplina getDiscplina() {
