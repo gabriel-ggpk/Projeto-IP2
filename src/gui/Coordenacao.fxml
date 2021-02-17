@@ -22,12 +22,7 @@
       <ListView fx:id="ListaAluno" layoutX="23.0" layoutY="187.0" onMouseClicked="#clicarAluno" prefHeight="168.0" prefWidth="490.0" />
       <ListView fx:id="ListaProfessor" layoutX="23.0" layoutY="129.0" onMouseClicked="#clicarProfessor" prefHeight="47.0" prefWidth="490.0" />
       <Button layoutX="303.0" layoutY="373.0" mnemonicParsing="false" onAction="#sair" prefHeight="32.0" prefWidth="115.0" text="LogOut" />
-      <Text layoutX="570.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar" wrappingWidth="65.60000000000014">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Button layoutX="570.0" layoutY="163.0" mnemonicParsing="false" onAction="#cadastrarProfessor" text="Professor" />
-      <Button layoutX="569.0" layoutY="201.0" mnemonicParsing="false" onAction="#cadastrarDisciplina" text="Disciplina" />
+      <Button layoutX="548.0" layoutY="235.0" mnemonicParsing="false" onAction="#cadastrarProfessor" text="Acessar Professor" />
+      <Button layoutX="542.0" layoutY="290.0" mnemonicParsing="false" onAction="#cadastrarDisciplina" text="Cadastrar Disciplina" />
    </children>
 </AnchorPane>

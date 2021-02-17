@@ -14,10 +14,16 @@ public class Professor extends Pessoa {
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
+	public String getMateria() {
+		if(disciplina == null) {
+			return "Disponivel ";
+		}
+		return this.disciplina.getNome();
+	}
 
 	@Override
 	public String toString() {
-		return String.format("%s%n%s  ","Professor", super.toString());
+		return String.format("Professor " + this.getMateria() + "\n" + super.toString());
 	}
 	
 	

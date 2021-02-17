@@ -43,6 +43,13 @@ public class CadastroDisciplinaController extends Cadastro implements Initializa
 
         criarDisciplina();
     }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        camposDisciplina.put(nome, "Nome");
+        camposDisciplina.put(vagas, "Vagas");
+        camposDisciplina.put(aulas, "Total de aulas");
+    }
 
     private void criarDisciplina() {
         Disciplina novaDisciplina = new Disciplina(nome.getText(), Integer.parseInt(vagas.getText()), Integer.parseInt(aulas.getText()));
@@ -57,10 +64,5 @@ public class CadastroDisciplinaController extends Cadastro implements Initializa
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        camposDisciplina.put(nome, "Nome");
-        camposDisciplina.put(vagas, "Vagas");
-        camposDisciplina.put(aulas, "Total de aulas");
-    }
+    
 }
