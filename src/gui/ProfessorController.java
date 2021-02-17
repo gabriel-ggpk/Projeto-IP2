@@ -77,6 +77,15 @@ public class ProfessorController implements Initializable {
 		caixa.setItems(alunosMatriculadosOL);
 	}
 	
+	public void atualizar() {
+		listaAlunosOL.clear();
+		alunosMatriculadosOL.clear();
+		
+		pegarAlunosMatriculados();
+		listaAlunos.setItems(listaAlunosOL);
+		caixa.setItems(alunosMatriculadosOL);
+    }
+	
 	public void cenaAluno(AlunoMatriculado aluno) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ProfessorEdit.fxml"));
