@@ -20,7 +20,7 @@ public class RepoDiscplina {
 	}
 	public boolean disciplinaExiste(Disciplina disc) {
 		for(int n = 0; n < materia.size(); n++) {
-			if(materia.contains(disc)) {
+			if(materia.get(n).getNome().equals(disc.getNome())) {
 				return false;
 			}
 		}

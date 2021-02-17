@@ -46,16 +46,14 @@ public class CadastroDisciplinaController extends Cadastro implements Initializa
 
     private void criarDisciplina() {
         Disciplina novaDisciplina = new Disciplina(nome.getText(), Integer.parseInt(vagas.getText()), Integer.parseInt(aulas.getText()));
-        // Tem que fazer algo com a Disciplina pós criada;
+
         if(Gerenciamento.getInstMain().getDiscplina().disciplinaExiste(novaDisciplina)) {
             Gerenciamento.getInstMain().getDiscplina().adicionar(novaDisciplina);
             limparDados(camposDisciplina);
-            System.out.println("aaaaaa");
         } 
         else {
             criarAlerta("Essa disciplina já existente!");
             colocarBorda(nome);
-            System.out.println("bbbbbb");
         }
     }
 
