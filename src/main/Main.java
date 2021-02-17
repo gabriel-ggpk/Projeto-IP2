@@ -16,9 +16,11 @@ class Tread extends Thread {
 
 public class Main extends Application {
 	/*
-	LOGIN E SENHA DOS TESTES:
-	ALUNO: login: 123 senha: 123
-	PROFESSOR: login 000 senha: 000 
+	todos os login e senhas são iguais
+	LOGIN E SENHA:
+	Cordenação: 000
+	Professores:(seguindo o padrão) P001, P002... P005
+	Alunos:()seguindo o padrão) 123(aluno ja existente) A001
 	*/
 	private static Stage stg;
 	private static Gerenciamento ger;
