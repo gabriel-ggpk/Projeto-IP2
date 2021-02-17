@@ -19,8 +19,8 @@ public class Main extends Application {
 	todos os login e senhas são iguais
 	LOGIN E SENHA:
 	Cordenação: 000
-	Professores:(seguindo o padrão) P001, P002... P005
-	Alunos:()seguindo o padrão) 123(aluno ja existente) A001
+	Professores:(seguindo o padrão) P001, P002... P006
+	Alunos:(seguindo o padrão) A001, A002... A008
 	*/
 	private static Stage stg;
 	private static Gerenciamento ger;
