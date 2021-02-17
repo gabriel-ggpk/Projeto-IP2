@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import negocios.Gerenciamento;
 import negocios.bean.AlunoMatriculado;
@@ -53,6 +54,12 @@ public class CoordenacaoController implements Initializable{
 		Gerenciamento.getInstMain().logOut();
 		ScreenManager.getInstance().showLoginScreen();
 	}
+    
+    
+    public void recarregar() {
+    	listar();
+    	settings();
+    }
        
     @FXML
     void cadastrarDisciplina(ActionEvent event) {
